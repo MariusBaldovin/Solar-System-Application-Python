@@ -9,6 +9,8 @@ def welcome():
     :return: Does not return anything.
     """
     # TODO: Your code here
+        print('------------------------------Solar Record Management System------------------------------')
+welcome()
 
 
 def menu():
@@ -27,6 +29,26 @@ def menu():
     :return: None if invalid selection otherwise an integer corresponding to a valid selection
     """
     # TODO: Your code here
+    #Showing the menu on the screen
+    print('Load Data')
+    print('Process Data')
+    print('Visualise Data')
+    print('Exit')
+    #Askink the user to input his selection
+    option= input('Please type in your option: ')
+    if (option == 'Load Data'):
+        print(1)
+    elif (option == 'Process Data'):
+        print(2)
+    elif (option == 'Visualise Data'):
+        print(3)
+    elif (option == 'Exit'):
+        print(4)
+    else:
+        print('Invalid option')
+        print('None')
+
+menu()
 
 
 def started(operation):
