@@ -9,7 +9,7 @@ def welcome():
     :return: Does not return anything.
     """
     # TODO: Your code here
-        print('------------------------------Solar Record Management System------------------------------')
+    print('------------------------------Solar Record Management System------------------------------')
 welcome()
 
 
@@ -34,6 +34,7 @@ def menu():
     print('Process Data')
     print('Visualise Data')
     print('Exit')
+    print()
     #Askink the user to input his selection
     option= input('Please type in your option: ')
     if (option == 'Load Data'):
@@ -45,7 +46,7 @@ def menu():
     elif (option == 'Exit'):
         print(4)
     else:
-        print('Invalid option')
+        print('Invalid option.Beware the option is case sensitive')
         print('None')
 
 menu()
@@ -63,6 +64,8 @@ def started(operation):
     :return: Does not return anything
     """
     # TODO: Your code here
+    print(operation + ' has started.')
+started('{Operation}')
 
 
 def completed(operation):
@@ -77,7 +80,8 @@ def completed(operation):
     :return: Does not return anything
     """
     # TODO: Your code here
-
+    print(operation + ' has completed.')
+completed('{Operation}')
 
 def error(error_msg):
     """
@@ -91,7 +95,8 @@ def error(error_msg):
     :return: Does not return anything
     """
     # TODO: Your code here
-
+    print('Error! ' + error_msg)
+error('{error_msg}.')
 
 def source_data_path():
     """
