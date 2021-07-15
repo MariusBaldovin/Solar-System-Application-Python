@@ -110,6 +110,16 @@ def source_data_path():
     :return: None if the file path does not end in 'csv' otherwise return the file path entered by the user
     """
     # TODO: Your code here
+    file_path = input('Please enter the data file path: ')#user will input the file path
+    print()
+    if (file_path[-3:] == 'csv'):#[-3:] will return the last 3 digits of the file_path and check if == with csv
+        print(file_path) #printing the file path
+    else:
+        print('Unsupported file extension,please make sure your file is ending in .csv')#printing the error
+        print('None')
+
+source_data_path() #calling the function
+
 
 
 def process_type():
