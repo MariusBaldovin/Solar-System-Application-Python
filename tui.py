@@ -287,7 +287,17 @@ def gravity_range():
     :return: a tuple with the lower and upper limits
     """
     # TODO: Your code here
+    # ask user to input a decimal value for the gravity lower limit
+    lower_limit = float(input('Please enter the gravity lower limit: ' ))
+   #ask the user to enter a decimal value for gravity upper limit
+    upper_limit = float(input('Please enter the gravity upper limit: ' ))
 
+    tup = (lower_limit, upper_limit) #transform the 2 variables into a tuple named tup
+
+    print(tup) #returning the tuple with lower limit and upper limit on the screen
+
+
+gravity_range()
 
 def orbits():
     """
