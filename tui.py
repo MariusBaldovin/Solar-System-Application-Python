@@ -47,7 +47,8 @@ def menu():
         print(4)
     else:
         print('Invalid option.Beware the option is case sensitive')
-        print('None')
+        print(None)
+
 
 menu()
 
@@ -113,12 +114,13 @@ def source_data_path():
     file_path = input('Please enter the data file path: ')#user will input the file path
     print()
     if (file_path[-3:] == 'csv'):#[-3:] will return the last 3 digits of the file_path and check if == with csv
-        print(file_path) #printing the file path
+        print(file_path) # printing the file path if true
     else:
-        print('Unsupported file extension,please make sure your file is ending in .csv')#printing the error
-        print('None')
+        print('Unsupported file extension,please make sure your file is ending in .csv')#printing the error if false
+        print(None) #printing None
 
 source_data_path() #calling the function
+
 
 
 
@@ -139,7 +141,27 @@ def process_type():
     :return: None if an invalid selection made otherwise an integer corresponding to a valid option
     """
     # TODO: Your code here
-
+print('Retrieve entity')
+print('Retrieve entity details')
+print('Categorise entities by type')
+print('Categorise entities by gravity')
+print('Summarise entities by orbit')
+print()
+#Askink the user to input his selection
+option= input('Please type in your option: ')
+if (option == 'Retrieve entity'):
+  print(1)
+elif (option == 'Retrieve entity details'):
+  print(2)
+elif (option == 'Categorise entities by type'):
+  print(3)
+elif (option == 'Categorise entities by gravity'):
+  print(4)
+elif (option == 'Summarise entities by orbit'):
+  print(5)
+else:
+  print('Invalid option(Beware the option is case sensitive')
+  print(None)
 
 def entity_name():
     """
