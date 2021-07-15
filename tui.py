@@ -194,8 +194,8 @@ def entity_details():
     # \n
 name = input('Please enter the name of an entity: ')
 list= list(map(int,input("Please enter the list indexes separated by spaces: ").strip().split()))
-#list = [int(item) for item in input("Please enter the list indexes separatated by spaces: ").split()] another way  for user to input
-# list of integers
+#list = [int(item) for item in input("Please enter the list indexes separatated by spaces: ").split()] another way
+# for user to input list of integers separated by space.
 print('[ ' + name +','+ str(list) + ' ]')
 entity_details()
 
@@ -218,6 +218,23 @@ def list_entity(entity, cols=[]):
     :return: does not return anything
     """
     # TODO: Your code here
+    if (cols == [0, 1]):
+        print(entity[0], entity[1])
+    elif (cols == [0, 2]):
+        print(entity[0], entity[2])
+    elif (cols == [1, 2]):
+        print(entity[1], entity[2])
+    elif (cols == [0]):
+        print(entity[0])
+    elif (cols == [1]):
+        print(entity[1])
+    elif (cols == [2]):
+        print(entity[2])
+    elif (cols == [0, 1, 2]) or (cols == []):
+        print(entity)
+
+#list_entity(['Earth', True, 8], [0, 2])
+
 
 
 def list_entities():
