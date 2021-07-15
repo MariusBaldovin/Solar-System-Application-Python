@@ -192,11 +192,10 @@ def entity_details():
     """
     # TODO: Your code here
     # \n
-name = input('Please enter the name of an entity: ')
-list= list(map(int,input("Please enter the list indexes separated by spaces: ").strip().split()))
-#list = [int(item) for item in input("Please enter the list indexes separatated by spaces: ").split()] another way
-# for user to input list of integers separated by space.
-print('[ ' + name +','+ str(list) + ' ]')
+    entity_name = input('Please enter the name of an entity: ')#asking user to enter name of entity
+    index_list = [(input('Please enter the list of indexes in column: ')) #asking user to enter the list of indexes
+    final_list = [entity_name , index_list] #creating a new list containing name of entity and list of indexes
+    print(final_list #displaying the new list on the screen
 entity_details()
 
 
@@ -294,7 +293,7 @@ def gravity_range():
 
     tup = (lower_limit, upper_limit) #transform the 2 variables into a tuple named tup
 
-    print(tup) #returning the tuple with lower limit and upper limit on the screen
+    print(tup) #returning a tuple with (lower limit , upper limit) on the screen
 
 
 gravity_range()
@@ -311,6 +310,11 @@ def orbits():
     :return: a list of entity names
     """
     # TODO: Your code here
+    entity_names = [input('Please enter entity names: ')] #ask user to input elements inside a list[]
+    print(entity_names) #displaying the list on the screen
+
+
+orbits()
 
 
 def visualise():
