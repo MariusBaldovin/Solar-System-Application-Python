@@ -162,6 +162,7 @@ elif (option == 'Summarise entities by orbit'):
 else:
   print('Invalid option(Beware the option is case sensitive')
   print(None)
+process_type()
 
 def entity_name():
     """
@@ -173,6 +174,9 @@ def entity_name():
     :return: the name of an entity
     """
     # TODO: Your code here
+    name = input('Please enter the name of an entity: ')
+    print(name)
+entity_name()
 
 
 def entity_details():
@@ -187,6 +191,13 @@ def entity_details():
     :return: A list containing the name of an entity and a list of column indexes
     """
     # TODO: Your code here
+    # \n
+name = input('Please enter the name of an entity: ')
+list= list(map(int,input("Please enter the list indexes separated by spaces: ").strip().split()))
+#list = [int(item) for item in input("Please enter the list indexes separatated by spaces: ").split()] another way  for user to input
+# list of integers
+print('[ ' + name +','+ str(list) + ' ]')
+entity_details()
 
 
 def list_entity(entity, cols=[]):
