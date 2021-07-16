@@ -193,9 +193,9 @@ def entity_details():
     # TODO: Your code here
     # \n
     entity_name = input('Please enter the name of an entity: ')#asking user to enter name of entity
-    index_list = [(input('Please enter the list of indexes in column: ')) #asking user to enter the list of indexes
+    index_list = [input('Please enter the list of indexes in column: ')]#asking user to enter the list of indexes
     final_list = [entity_name , index_list] #creating a new list containing name of entity and list of indexes
-    print(final_list #displaying the new list on the screen
+    print(final_list) #displaying the new list on the screen
 entity_details()
 
 
@@ -333,7 +333,25 @@ def visualise():
     :return: None if an invalid selection is made otherwise an integer corresponding to a valid option
     """
     # TODO: Your code here
-
+    print('Entities by type')
+    print('Entities by gravity')
+    print('Summary of orbits')
+    print('Animate gravities')
+    print()
+    # Askink the user to input his selection
+    option = input('Please type in your option: ')
+    if (option == 'Entities by type'):
+        print(1)
+    elif (option == 'Entities by gravity'):
+        print(2)
+    elif (option == 'Summary of orbits'):
+        print(3)
+    elif (option == 'Animate gravities'):
+        print(4)
+    else:
+        print('Invalid option(Beware the option is case sensitive')
+        print(None)
+visualise()
 
 def save():
     """
