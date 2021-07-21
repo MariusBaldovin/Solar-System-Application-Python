@@ -10,7 +10,7 @@ def welcome():
     """
     # TODO: Your code here
     print('------------------------------Solar Record Management System------------------------------')
-welcome()
+
 
 
 def menu():
@@ -37,7 +37,7 @@ def menu():
     print('Exit')
     print()
     #Askink the user to input his selection
-    option= input('Please type in your option: ')
+    option = input('Please type in your option: ')
     if (option == 'Load Data'):
         return 1
     elif (option == 'Process Data'):
@@ -47,11 +47,12 @@ def menu():
     elif (option == 'Exit'):
         return 4
     else:
-        return ('Invalid option.Beware the option is case sensitive')
+        print('Invalid option.Be aware the option  is case sensitive')
         return None
 
 
-menu()
+
+
 
 
 def started(operation):
@@ -66,8 +67,9 @@ def started(operation):
     :return: Does not return anything
     """
     # TODO: Your code here
-    print(operation + ' has started.')
-started('{Operation}')
+    return f'{operation} has started.'
+
+
 
 
 def completed(operation):
@@ -82,8 +84,9 @@ def completed(operation):
     :return: Does not return anything
     """
     # TODO: Your code here
-    print(operation + ' has completed.')
-completed('{Operation}')
+    return f'{operation} has completed.'
+
+
 
 def error(error_msg):
     """
@@ -97,8 +100,8 @@ def error(error_msg):
     :return: Does not return anything
     """
     # TODO: Your code here
-    print('Error! ' + error_msg)
-error('{error_msg}.')
+    print(f'Error!  {error_msg}')
+
 
 def source_data_path():
     """
@@ -112,7 +115,7 @@ def source_data_path():
     :return: None if the file path does not end in 'csv' otherwise return the file path entered by the user
     """
     # TODO: Your code here
-    file_path = input('Please enter the data file path: ')#user will input the file path
+    file_path = input('Please enter the file path of your data file: ')#user will input the file path
     print()
     if (file_path[-3:] == 'csv'):#[-3:] will return the last 3 digits of the file_path and check if == with csv
         print(file_path) # printing the file path if true
@@ -120,7 +123,7 @@ def source_data_path():
         print('Unsupported file extension,please make sure your file is ending in .csv')#printing the error if false
         print(None) #printing None
 
-source_data_path() #calling the function
+
 
 
 
@@ -142,28 +145,30 @@ def process_type():
     :return: None if an invalid selection made otherwise an integer corresponding to a valid option
     """
     # TODO: Your code here
-print('Retrieve entity')
-print('Retrieve entity details')
-print('Categorise entities by type')
-print('Categorise entities by gravity')
-print('Summarise entities by orbit')
-print()
+    print('How the file should be processed? ')
+    print()
+    print('Retrieve entity')
+    print('Retrieve entity details')
+    print('Categorise entities by type')
+    print('Categorise entities by gravity')
+    print('Summarise entities by orbit')
+    print()
 #Askink the user to input his selection
-option= input('Please type in your option: ')
-if (option == 'Retrieve entity'):
-  print(1)
-elif (option == 'Retrieve entity details'):
-  print(2)
-elif (option == 'Categorise entities by type'):
-  print(3)
-elif (option == 'Categorise entities by gravity'):
-  print(4)
-elif (option == 'Summarise entities by orbit'):
-  print(5)
-else:
-  print('Invalid option(Beware the option is case sensitive')
-  print(None)
-process_type()
+    option = input('Please type in your option: ')
+    if (option == 'Retrieve entity'):
+        return 1
+    elif (option == 'Retrieve entity details'):
+        return 2
+    elif (option == 'Categorise entities by type'):
+        return 3
+    elif (option == 'Categorise entities by gravity'):
+        return 4
+    elif (option == 'Summarise entities by orbit'):
+        return 5
+    else:
+        print('Invalid option,be aware the option is case sensitive')
+        return None
+
 
 def entity_name():
     """
@@ -176,8 +181,8 @@ def entity_name():
     """
     # TODO: Your code here
     name = input('Please enter the name of an entity: ')
-    print(name)
-entity_name()
+    return name
+
 
 
 def entity_details():
@@ -194,10 +199,10 @@ def entity_details():
     # TODO: Your code here
     # \n
     entity_name = input('Please enter the name of an entity: ')#asking user to enter name of entity
-    index_list = [input('Please enter the list of indexes in column: ')]#asking user to enter the list of indexes
+    index_list = [input('Please enter the list of integer column indexes: ')]#asking user to enter the list of indexes
     final_list = [entity_name , index_list] #creating a new list containing name of entity and list of indexes
-    print(final_list) #displaying the new list on the screen
-entity_details()
+    return final_list #displaying the new list on the screen
+
 
 
 def list_entity(entity, cols=[]):
@@ -294,10 +299,10 @@ def gravity_range():
 
     tup = (lower_limit, upper_limit) #transform the 2 variables into a tuple named tup
 
-    print(tup) #returning a tuple with (lower limit , upper limit) on the screen
+    return tup #returning a tuple with (lower limit , upper limit) on the screen
 
 
-gravity_range()
+
 
 def orbits():
     """
@@ -311,11 +316,11 @@ def orbits():
     :return: a list of entity names
     """
     # TODO: Your code here
-    entity_names = [input('Please enter entity names: ')] #ask user to input elements inside a list[]
-    print(entity_names) #displaying the list on the screen
+    entity_names = [input('Please enter the list of  entity names: ')] #ask user to input elements inside a list[]
+    return entity_names #returning  the list on the screen
 
 
-orbits()
+
 
 
 def visualise():
@@ -334,25 +339,27 @@ def visualise():
     :return: None if an invalid selection is made otherwise an integer corresponding to a valid option
     """
     # TODO: Your code here
+    print('How the data should be visualised? ')
+    print()
     print('Entities by type')
     print('Entities by gravity')
     print('Summary of orbits')
     print('Animate gravities')
     print()
-    # Askink the user to input his selection
+    # Asking the user to input his selection
     option = input('Please type in your option: ')
     if (option == 'Entities by type'):
-        print(1)
+        return 1
     elif (option == 'Entities by gravity'):
-        print(2)
+        return 2
     elif (option == 'Summary of orbits'):
-        print(3)
+        return 3
     elif (option == 'Animate gravities'):
-        print(4)
+        return 4
     else:
-        print('Invalid option.Beware the option is case sensitive')
-        print(None)
-visualise()
+        print('Invalid option,be aware the option is case sensitive')
+        return None
+
 
 def save():
     """
