@@ -376,11 +376,13 @@ def save():
     :return: None if an invalid selection is made otherwise an integer corresponding to a valid option
     """
     # TODO: Your code here
+    print('How the data should be saved? ')
+    print()
     print('Export as JSON')
     print()
+    option = input('Please type in your option: ')
     if (option == 'Export as JSON'):
-        print(1)
+        return 1
     else:
         print('Invalid selection(Beware the option is case sensitive')
-        print(None)
-save()
+        return None
