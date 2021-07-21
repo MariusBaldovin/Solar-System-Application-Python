@@ -27,6 +27,7 @@ def menu():
     None should be returned.
 
     :return: None if invalid selection otherwise an integer corresponding to a valid selection
+
     """
     # TODO: Your code here
     #Showing the menu on the screen
@@ -38,16 +39,16 @@ def menu():
     #Askink the user to input his selection
     option= input('Please type in your option: ')
     if (option == 'Load Data'):
-        print(1)
+        return 1
     elif (option == 'Process Data'):
-        print(2)
+        return 2
     elif (option == 'Visualise Data'):
-        print(3)
+        return 3
     elif (option == 'Exit'):
-        print(4)
+        return 4
     else:
-        print('Invalid option.Beware the option is case sensitive')
-        print(None)
+        return ('Invalid option.Beware the option is case sensitive')
+        return None
 
 
 menu()
@@ -349,7 +350,7 @@ def visualise():
     elif (option == 'Animate gravities'):
         print(4)
     else:
-        print('Invalid option(Beware the option is case sensitive')
+        print('Invalid option.Beware the option is case sensitive')
         print(None)
 visualise()
 
@@ -368,3 +369,11 @@ def save():
     :return: None if an invalid selection is made otherwise an integer corresponding to a valid option
     """
     # TODO: Your code here
+    print('Export as JSON')
+    print()
+    if (option == 'Export as JSON'):
+        print(1)
+    else:
+        print('Invalid selection(Beware the option is case sensitive')
+        print(None)
+save()
