@@ -47,7 +47,7 @@ def menu():
     elif (option == 'Exit'):
         return 4
     else:
-        print('Invalid option.Be aware the option  is case sensitive')
+        print('Invalid option,be aware the option  is case sensitive')
         return None
 
 
@@ -67,7 +67,8 @@ def started(operation):
     :return: Does not return anything
     """
     # TODO: Your code here
-    return f'{operation} has started.'
+    print(f'{operation} has started.')
+
 
 
 
@@ -84,7 +85,8 @@ def completed(operation):
     :return: Does not return anything
     """
     # TODO: Your code here
-    return f'{operation} has completed.'
+    print(f'{operation} has completed.')
+
 
 
 
@@ -118,10 +120,11 @@ def source_data_path():
     file_path = input('Please enter the file path of your data file: ')#user will input the file path
     print()
     if (file_path[-3:] == 'csv'):#[-3:] will return the last 3 digits of the file_path and check if == with csv
-        print(file_path) # printing the file path if true
+        return file_path # printing the file path if true
     else:
         print('Unsupported file extension,please make sure your file is ending in .csv')#printing the error if false
-        print(None) #printing None
+        return None #returning None value
+
 
 
 
