@@ -226,27 +226,20 @@ def list_entity(entity, cols=[]):
     :return: does not return anything
     """
     # TODO: Your code here
-    if (cols == [0, 1]):
-        print(entity[0], entity[1])
-    elif (cols == [0, 2]):
-        print(entity[0], entity[2])
-    elif (cols == [1, 2]):
-        print(entity[1], entity[2])
-    elif (cols == [0]):
-        print(entity[0])
-    elif (cols == [1]):
-        print(entity[1])
-    elif (cols == [2]):
-        print(entity[2])
-    elif (cols == [0, 1, 2]) or (cols == []):
+    entity1 = []
+    if cols == []:
         print(entity)
+    else:
+        for i in cols:
+            entity1.append(entity[i])
+        print(entity1)
 
-#list_entity(['Earth', True, 8], [0, 2])
 
 
 
-def list_entities():
-    """
+
+def list_entities(entities,cols = []):
+    """"
     Task 11: Display each entity in entities. Only the data for the specified column indexes will be displayed.
     If no column indexes have been specified, then all the data for an entity will be displayed.
 
