@@ -117,22 +117,16 @@ def source_data_path():
     :return: None if the file path does not end in 'csv' otherwise return the file path entered by the user
     """
     # TODO: Your code here
-    import csv
     file_path = input('Please enter the file path of your data file: ')#user will input the file path
     print()
     if (file_path[-3:] == 'csv'):
-        with open(file_path) as csv_file:
-            reader = csv.DictReader(csv_file)
-            for row in reader:
-                 return row
+        return file_path
     #[-3:] will return the last 3 digits of the file_path and check if == with csv
-
-
-    # printing the file path if true
     else:
-        print('Unsupported file extension,please make sure your file is ending in .csv')#printing the error if false
-        return None #returning None value
-print(source_data_path())
+        print('Unsupported file extension,please make sure your file is ending in .csv')
+        return None
+
+
 
 
 

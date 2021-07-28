@@ -4,6 +4,7 @@ import csv
 import tui
 import visual
 
+
 # Task 18: Create an empty list named 'records'.
 # This will be used to store the date read from the source data file.
 # TODO: Your code here
@@ -23,9 +24,11 @@ def run():
         # for the different operations that can be performed on the data.
         # Assign the selected option to a suitable local variable
         # TODO: Your code here
-        tui.menu()
+        option = tui.menu()
 
-"""
+
+
+
         # Task 21: Check if the user selected the option for loading data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data loading
         # operation has started.
@@ -40,7 +43,22 @@ def run():
         # - Read each line from the CSV file and add it to the list 'records'. You should appropriately handle the case
         # where the file cannot be found
         # TODO: Your code here
-        if
+        if option == 1:
+            tui.started('Load Data')
+          # C:\Users\maryus666\Desktop\QHO426\QHO426\data\sol_data.csv
+            file = tui.source_data_path()
+            with open( file ,  'r') as csv_file:
+                reader = csv.reader(csv_file)
+                temp_list = list(reader)
+                records.append(temp_list)
+
+                #for temp_list in reader:
+                    #records.append(temp_list)
+            tui.completed('Load Data')
+
+
+
+
         # Task 22: Check if the user selected the option for processing data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data processing
         # operation has started.
@@ -105,7 +123,25 @@ def run():
         #       - Use the appropriate function in the module tui to indicate that the orbit summary process has
         #       completed.
         # TODO: Your code here
+        elif option == 2:
+            tui.started('Process Data')
+            option1 = tui.process_type()
+            if option1 == 1:
+                tui.started('Retrieve entity')
+                name = tui.entity_name()
+                if name in records:
+                    for item_index in range(0, len(records)):
+                        if name == records
 
+
+
+
+
+
+
+
+            tui.completed('Process Data')
+run()
         # Task 23: Check if the user selected the option for visualising data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the data visualisation operation
         # has started.
@@ -175,7 +211,7 @@ def run():
         # display an error message
         # TODO: Your code here
 
-
+""""
 if __name__ == "__main__":
     run()
 
