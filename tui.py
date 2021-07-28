@@ -151,7 +151,7 @@ def process_type():
     :return: None if an invalid selection made otherwise an integer corresponding to a valid option
     """
     # TODO: Your code here
-    print('How the file should be processed? ')
+    print('How the data should be processed? ')
     print()
     print('Retrieve entity')
     print('Retrieve entity details')
