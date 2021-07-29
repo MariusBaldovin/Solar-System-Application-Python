@@ -210,7 +210,7 @@ def entity_details():
     entity_name = input('Please enter the name of an entity: ')#asking user to enter name of entity
     index_list = [input('Please enter the list of integer column indexes: ')]#asking user to enter the list of indexes
     final_list = [entity_name , index_list] #creating a new list containing name of entity and list of indexes
-    return final_list #displaying the new list on the screen
+    print(final_list) #displaying the new list on the screen
 
 
 

@@ -45,8 +45,6 @@ def run():
         global records
         if option == 1:
             tui.started('Load Data')
-          # C:\Users\maryus666\Desktop\QHO426\QHO426\data\sol_data.csv
-            #file = tui.source_data_path()
             try:
                 with open(tui.source_data_path(),'r') as csv_file:
                     reader = csv.reader(csv_file)
@@ -134,10 +132,30 @@ def run():
                 if name in temp_entity_list:
                     for item_index in range(0, len(records)):
                         if name == records[item_index][0]:
-                            print(records[item_index])
+                            tui.list_entity(entity=records[item_index],cols =[]) #using function list_entity to print the entity details
+            elif option1 == 2:
+                tui.started('Retrieve entity details')
+                record = tui.entity_details()
+                print(record)
+                tui.completed('Retrieve entity details')
+            elif option1 == 3:
+                tui.started('Categorise entities by type')
 
+                tui.completed('Categorise entities by type')
+            elif option1 == 4:
+                tui.started('Categorise entities by gravity')
 
+                tui.completed('Categorise entities by gravity')
+            elif option1 == 5:
+                tui.started('Summarise entities by orbit')
+
+                tui.completed('Summarise entities by orbit')
             tui.completed('Process Data')
+
+
+
+           # C:\Users\maryus666\Desktop\QHO426\QHO426\data\sol_data.csv
+
 run()
         # Task 23: Check if the user selected the option for visualising data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the data visualisation operation
@@ -187,7 +205,7 @@ run()
         #       - Use the appropriate function in the module tui to indicate that the gravity animation visualisation
         #       process has completed.
         # TODO: Your code here
-
+        #elif option == 3:
         # Task 28: Check if the user selected the option for saving data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the save data operation has started.
         # - Save the data (see below)
@@ -203,7 +221,8 @@ run()
         # Task 29: Check if the user selected the option for exiting.  If so, then do the following:
         # break out of the loop
         # TODO: Your code here
-
+        #elif option == 4:
+        #break
         # Task 30: If the user selected an invalid option then use the appropriate function of the module tui to
         # display an error message
         # TODO: Your code here
