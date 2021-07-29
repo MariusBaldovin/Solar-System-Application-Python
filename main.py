@@ -12,7 +12,6 @@ records= []
 
 
 def run():
-
     # Task 19: Call the function welcome of the module tui.
     # This will display our welcome message when the program is executed.
     # TODO: Your code here
@@ -43,17 +42,19 @@ def run():
         # - Read each line from the CSV file and add it to the list 'records'. You should appropriately handle the case
         # where the file cannot be found
         # TODO: Your code here
+        global records
         if option == 1:
             tui.started('Load Data')
           # C:\Users\maryus666\Desktop\QHO426\QHO426\data\sol_data.csv
-            file = tui.source_data_path()
-            with open( file ,  'r') as csv_file:
-                reader = csv.reader(csv_file)
-                temp_list = list(reader)
-                records.append(temp_list)
+            #file = tui.source_data_path()
+            try:
+                with open(tui.source_data_path(),'r') as csv_file:
+                    reader = csv.reader(csv_file)
+                    for temp_list in reader:
+                        records.append(temp_list)
+            except FileNotFoundError:
+                print('Data file does not exist')
 
-                #for temp_list in reader:
-                    #records.append(temp_list)
             tui.completed('Load Data')
 
 
@@ -129,15 +130,11 @@ def run():
             if option1 == 1:
                 tui.started('Retrieve entity')
                 name = tui.entity_name()
-                if name in records:
+                temp_entity_list = [x[0] for x in records]
+                if name in temp_entity_list:
                     for item_index in range(0, len(records)):
-                        if name == records
-
-
-
-
-
-
+                        if name == records[item_index][0]:
+                            print(records[item_index])
 
 
             tui.completed('Process Data')
@@ -211,8 +208,6 @@ run()
         # display an error message
         # TODO: Your code here
 
-""""
-if __name__ == "__main__":
-    run()
 
-"""
+#if __name__ == "__main__":
+ #   run()

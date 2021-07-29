@@ -117,14 +117,17 @@ def source_data_path():
     :return: None if the file path does not end in 'csv' otherwise return the file path entered by the user
     """
     # TODO: Your code here
+
     file_path = input('Please enter the file path of your data file: ')#user will input the file path
     print()
-    if (file_path[-3:] == 'csv'):
-        return file_path
-    #[-3:] will return the last 3 digits of the file_path and check if == with csv
-    else:
+    if (file_path[-3:] != 'csv'):
         print('Unsupported file extension,please make sure your file is ending in .csv')
         return None
+
+    #[-3:] will return the last 3 digits of the file_path and check if == with csv
+    else:
+        return file_path
+
 
 
 
