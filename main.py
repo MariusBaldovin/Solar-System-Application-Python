@@ -133,7 +133,7 @@ def run():
                     for item_index in range(0, len(records)):
                         if name == records[item_index][0]:
                             tui.list_entity(entity=records[item_index],cols =[])#using function list_entity to print the entity details
-                elif
+                else:
                     Print('Entity not found')
                     continue
             elif option1 == 2:
@@ -158,9 +158,9 @@ def run():
 
 
 
-           # C:\Users\maryus666\Desktop\QHO426\QHO426\data\sol_data.csv
 
-run()
+
+
         # Task 23: Check if the user selected the option for visualising data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the data visualisation operation
         # has started.
@@ -215,19 +215,18 @@ run()
                 tui.started('Entities by type')
                 #Use your code from earlier to assemble a dictionary containing a list of planets and a list of
 #       non-planets.
-                visual.entities_pie(   )
+                visual.entities_pie()
                 tui.completed('Entities by type')
-            tui.completed('Visualise Data')
             elif visual_option == 2:
                 tui.started('Entities by gravity')
 #       - Use your code from earlier to assemble a dictionary containing lists of entities grouped into
 #       low (below lower limit), medium and high (above upper limit) gravity categories.
-                visual.entities_bar(   )
+                visual.entities_bar()
                 tui.completed('Entities by gravity')
             elif visual_option == 3:
                 tui.started('Summary of orbits')
 #Use your code from earlier to assemble a nested dictionary of orbiting planets.
-                visual.orbits(  )
+                visual.orbits()
                 tui.completed('Summary of orbits')
             elif visual_option == 4:
                 tui.started('Animate gravities')
@@ -235,7 +234,7 @@ run()
 #       low (below lower limit), medium and high (above upper limit) gravity categories.
                 visual.gravity_animation(  )
                 tui.completed('Animate gravities')
-
+            tui.completed('Visualise Data')
 
         # Task 28: Check if the user selected the option for saving data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the save data operation has started.
@@ -257,7 +256,7 @@ run()
         # break out of the loop
         # TODO: Your code here
         elif option == 5:
-        break
+            break
         # Task 30: If the user selected an invalid option then use the appropriate function of the module tui to
         # display an error message
         # TODO: Your code here
@@ -266,4 +265,7 @@ run()
 
 
 if __name__ == "__main__":
-run()
+
+ run()
+
+# C:\Users\maryus666\Desktop\QHO426\QHO426\data\sol_data.csv
