@@ -34,6 +34,7 @@ def menu():
     print('Load Data')
     print('Process Data')
     print('Visualise Data')
+    print('Save Data')
     print('Exit')
     print()
     #Askink the user to input his selection
@@ -44,8 +45,10 @@ def menu():
         return 2
     elif (option == 'Visualise Data'):
         return 3
-    elif (option == 'Exit'):
+    elif (option == 'Save Data'):
         return 4
+    elif (option == 'Exit'):
+        return 5
     else:
         print('Invalid option,be aware the option  is case sensitive')
         return None
@@ -244,7 +247,7 @@ def list_entity(entity, cols=[]):
 
 
 
-def list_entities(entities,cols = []):
+def list_entities(entities,cols = []):#not solved yet
     """"
     Task 11: Display each entity in entities. Only the data for the specified column indexes will be displayed.
     If no column indexes have been specified, then all the data for an entity will be displayed.
@@ -277,7 +280,7 @@ def list_entities(entities,cols = []):
         i1 += 1
     print(entity1)
 
-list_entities([[1,2,3,4] , ['Mars','earth','df','gh'] , [123,2,3,4]],cols = [0,1])
+#list_entities([[1,2,3,4] , ['Mars','earth','df','gh'] , [123,2,3,4]],cols = [0,1])
 
 def list_categories(categories):
     """
@@ -292,7 +295,7 @@ def list_categories(categories):
     :return: Does not return anything
     """
     # TODO: Your code here
-    categories = {}
+
 
 def gravity_range():
     """
@@ -312,7 +315,8 @@ def gravity_range():
 
     tup = (lower_limit, upper_limit) #transform the 2 variables into a tuple named tup
 
-    return tup #returning a tuple with (lower limit , upper limit) on the screen
+    print(tup) #returning a tuple with (lower limit , upper limit) on the screen
+
 
 
 
