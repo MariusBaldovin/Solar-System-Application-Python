@@ -1,7 +1,10 @@
+import collections
+
 import matplotlib.pyplot as plt
 
-
+import main
 def entities_pie(categories):
+
     """
     Task 24: Display a single subplot that shows a pie chart for categories.
 
