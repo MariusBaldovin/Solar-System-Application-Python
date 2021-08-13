@@ -3,6 +3,7 @@ import collections
 import matplotlib.pyplot as plt
 
 import main
+
 def entities_pie(categories):
 
     """
@@ -14,7 +15,7 @@ def entities_pie(categories):
     :return: Does not return anything
     """
 
-
+#list = [x[]]
 def entities_bar(categories):
     """
     Task 25: Display a single subplot that shows a bar chart for categories.

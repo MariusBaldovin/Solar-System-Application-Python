@@ -50,7 +50,7 @@ def menu():
     elif (option == 'Exit'):
         return 5
     else:
-        print('Invalid option,be aware the option  is case sensitive')
+        #print('Invalid option,be aware the option  is case sensitive')
         return None
 
 
@@ -123,13 +123,16 @@ def source_data_path():
 
     file_path = input('Please enter the file path of your data file: ')#user will input the file path
     print()
-    if (file_path[-3:] != 'csv'):
-        print('Unsupported file extension,please make sure your file is ending in .csv')
-        return None
+    #if (file_path[-3:] == 'csv'):
+    if ".csv" in file_path:
+        #print('Unsupported file extension,please make sure your file is ending in .csv')
+        return file_path
+
 
     #[-3:] will return the last 3 digits of the file_path and check if == with csv
     else:
-        return file_path
+        return None
+
 
 
 
@@ -315,7 +318,7 @@ def gravity_range():
 
     tup = (lower_limit, upper_limit) #transform the 2 variables into a tuple named tup
 
-    print(tup) #returning a tuple with (lower limit , upper limit) on the screen
+    return tup #returning a tuple with (lower limit , upper limit) on the screen
 
 
 

@@ -52,8 +52,10 @@ def run():
                         records.append(temp_list)
             except FileNotFoundError:
                 print('Data file does not exist')
+                print()
 
             tui.completed('Load Data')
+            print()
 
 
 
