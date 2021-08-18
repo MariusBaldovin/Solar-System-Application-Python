@@ -5,6 +5,7 @@ import tui
 import visual
 
 
+
 # Task 18: Create an empty list named 'records'.
 # This will be used to store the date read from the source data file.
 # TODO: Your code here
@@ -53,6 +54,7 @@ def run():
             except FileNotFoundError:
                 print('Data file does not exist')
                 print()
+            print(records)
 
             tui.completed('Load Data')
             print()
@@ -145,11 +147,36 @@ def run():
                 tui.completed('Retrieve entity details')
             elif option1 == 3:
                 tui.started('Categorise entities by type')
+                planets = []
+                nonplanets = []
+                for sublist in records:
+                    if sublist[1] == 'FALSE':
+                        nonplanets.append(sublist[0])
+                    elif sublist[1] == 'TRUE':
+                        planets.append(sublist[0])
+                my_dict = {'Planets': planets , 'Non-planets': nonplanets}
+
+
+
+
 
                 tui.completed('Categorise entities by type')
             elif option1 == 4:
                 tui.started('Categorise entities by gravity')
-                tui.gravity_range()
+                gravity_range = tui.gravity_range()
+                below_lower_limit = []
+                above_upper_limit = []
+                between_lower_and_upper = []
+                records_minus_first_line = records[1:]
+                for sublist_gravity in records_minus_first_line:
+                    if float(sublist_gravity[8]) < float(gravity_range[0]):
+                        below_lower_limit.append(sublist_gravity[0])
+                    elif float(sublist_gravity[8]) > float(gravity_range[1]):
+                        above_upper_limit.append(sublist_gravity[0])
+                    else:
+                        between_lower_and_upper.append(sublist_gravity[0])
+                my_dict_gravity = {'Low': below_lower_limit, 'Medium': between_lower_and_upper, 'High': above_upper_limit}
+                print(my_dict_gravity)
 
                 tui.completed('Categorise entities by gravity')
             elif option1 == 5:
@@ -212,25 +239,44 @@ def run():
         # TODO: Your code here
         elif option == 3:
             tui.started('Visualise Data')
-            visual_option == tui.visualise()
-            if visual_option == 1:
+            o = tui.visualise()
+            if o == 1:
                 tui.started('Entities by type')
-                #Use your code from earlier to assemble a dictionary containing a list of planets and a list of
-#       non-planets.
-                visual.entities_pie()
+                planets = []
+                nonplanets = []
+                for sublist in records:
+                    if sublist[1] == 'FALSE':
+                        nonplanets.append(sublist[0])
+                    elif sublist[1] == 'TRUE':
+                        planets.append(sublist[0])
+                categories = {'Planets': planets, 'Non-Planets': nonplanets}
+
+                visual.entities_pie(categories)
                 tui.completed('Entities by type')
-            elif visual_option == 2:
+            elif o == 2:
                 tui.started('Entities by gravity')
-#       - Use your code from earlier to assemble a dictionary containing lists of entities grouped into
-#       low (below lower limit), medium and high (above upper limit) gravity categories.
+                gravity_range = tui.gravity_range()
+                below_lower_limit = []
+                above_upper_limit = []
+                between_lower_and_upper = []
+                records_minus_first_line = records[1:]
+                for sublist_gravity in records_minus_first_line:
+                    if float(sublist_gravity[8]) < float(gravity_range[0]):
+                        below_lower_limit.append(sublist_gravity[0])
+                    elif float(sublist_gravity[8]) > float(gravity_range[1]):
+                        above_upper_limit.append(sublist_gravity[0])
+                    else:
+                        between_lower_and_upper.append(sublist_gravity[0])
+                my_dict_gravity = {'Low': below_lower_limit, 'Medium': between_lower_and_upper,
+                                   'High': above_upper_limit}
                 visual.entities_bar()
                 tui.completed('Entities by gravity')
-            elif visual_option == 3:
+            elif o == 3:
                 tui.started('Summary of orbits')
 #Use your code from earlier to assemble a nested dictionary of orbiting planets.
                 visual.orbits()
                 tui.completed('Summary of orbits')
-            elif visual_option == 4:
+            elif o == 4:
                 tui.started('Animate gravities')
 #    - Use your code from earlier to assemble a dictionary containing lists of entities grouped into
 #       low (below lower limit), medium and high (above upper limit) gravity categories.

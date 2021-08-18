@@ -215,6 +215,10 @@ def entity_details():
     # \n
     entity_name = input('Please enter the name of an entity: ')#asking user to enter name of entity
     index_list = [input('Please enter the list of integer column indexes: ')]#asking user to enter the list of indexes
+    entity_detail_index = []
+    #for index in index_list:
+        #entity_detail_index.append(????[index])
+
     final_list = [entity_name , index_list] #creating a new list containing name of entity and list of indexes
     print(final_list) #displaying the new list on the screen
 
@@ -285,7 +289,7 @@ def list_entities(entities,cols = []):#not solved yet
 
 #list_entities([[1,2,3,4] , ['Mars','earth','df','gh'] , [123,2,3,4]],cols = [0,1])
 
-def list_categories(categories):
+def list_categories(categories ={}):
     """
     Task 12: Display the contents of the dictionary categories.
 

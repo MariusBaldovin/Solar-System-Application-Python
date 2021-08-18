@@ -1,4 +1,5 @@
 import collections
+import csv
 
 import matplotlib.pyplot as plt
 
@@ -15,7 +16,15 @@ def entities_pie(categories):
     :return: Does not return anything
     """
 
-#list = [x[]]
+    sizes = [len(categories['Planets']) , len(categories['Non-Planets'])]
+    labels = ['Planets', 'Non-Planets']
+    plt.pie(sizes, labels=labels)
+    plt.show()
+
+
+
+
+
 def entities_bar(categories):
     """
     Task 25: Display a single subplot that shows a bar chart for categories.
@@ -25,7 +34,10 @@ def entities_bar(categories):
     :param categories: A dictionary with entities categorised into 'low', 'medium' and 'high' gravity
     :return: Does not return anything
     """
+data = [len(categories['below_lower_limit']) , len(categories['between_lower_and_upper']) , len(categories['above_upper_limit'])]
 
+    plt.bar(['Low' , 'Medium' , 'High'] , data)
+    plt.show()
 
 def orbits(summary):
     """
