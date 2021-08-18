@@ -267,9 +267,9 @@ def run():
                         above_upper_limit.append(sublist_gravity[0])
                     else:
                         between_lower_and_upper.append(sublist_gravity[0])
-                my_dict_gravity = {'Low': below_lower_limit, 'Medium': between_lower_and_upper,
+                categories = {'Low': below_lower_limit, 'Medium': between_lower_and_upper,
                                    'High': above_upper_limit}
-                visual.entities_bar()
+                visual.entities_bar(categories)
                 tui.completed('Entities by gravity')
             elif o == 3:
                 tui.started('Summary of orbits')

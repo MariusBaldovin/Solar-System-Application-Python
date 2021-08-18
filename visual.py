@@ -34,7 +34,7 @@ def entities_bar(categories):
     :param categories: A dictionary with entities categorised into 'low', 'medium' and 'high' gravity
     :return: Does not return anything
     """
-data = [len(categories['below_lower_limit']) , len(categories['between_lower_and_upper']) , len(categories['above_upper_limit'])]
+    data = [len(categories['Low']) , len(categories['Medium']) , len(categories['High'])]
 
     plt.bar(['Low' , 'Medium' , 'High'] , data)
     plt.show()
