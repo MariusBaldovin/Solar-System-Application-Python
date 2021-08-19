@@ -121,26 +121,13 @@ def source_data_path():
     """
     # TODO: Your code here
 
-    file_path = input('Please enter the file path of your data file: ')#user will input the file path
+    file_path = input('Please enter the file path of your data file: ')
     print()
-    #if (file_path[-3:] == 'csv'):
-    if ".csv" in file_path:
-        #print('Unsupported file extension,please make sure your file is ending in .csv')
+    if ".csv" in file_path[-4:]:
         return file_path
-
-
-    #[-3:] will return the last 3 digits of the file_path and check if == with csv
     else:
+        print('Unsupported file extension,please make sure your file is ending in .csv')
         return None
-
-
-
-
-
-
-
-
-
 
 
 def process_type():
@@ -289,7 +276,7 @@ def list_entities(entities,cols = []):#not solved yet
 
 #list_entities([[1,2,3,4] , ['Mars','earth','df','gh'] , [123,2,3,4]],cols = [0,1])
 
-def list_categories(categories ={}):
+def list_categories(categories = {}):
     """
     Task 12: Display the contents of the dictionary categories.
 
@@ -302,6 +289,7 @@ def list_categories(categories ={}):
     :return: Does not return anything
     """
     # TODO: Your code here
+    print(categories)
 
 
 def gravity_range():

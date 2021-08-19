@@ -54,8 +54,6 @@ def run():
             except FileNotFoundError:
                 print('Data file does not exist')
                 print()
-            print(records)
-
             tui.completed('Load Data')
             print()
 
@@ -143,7 +141,6 @@ def run():
             elif option1 == 2:
                 tui.started('Retrieve entity details')
                 record = tui.entity_details()
-                #print(record)
                 tui.completed('Retrieve entity details')
             elif option1 == 3:
                 tui.started('Categorise entities by type')
@@ -154,12 +151,8 @@ def run():
                         nonplanets.append(sublist[0])
                     elif sublist[1] == 'TRUE':
                         planets.append(sublist[0])
-                my_dict = {'Planets': planets , 'Non-planets': nonplanets}
-
-
-
-
-
+                categories = {'Planets': planets , 'Non-planets': nonplanets}
+                tui.list_categories(categories)
                 tui.completed('Categorise entities by type')
             elif option1 == 4:
                 tui.started('Categorise entities by gravity')
@@ -175,12 +168,27 @@ def run():
                         above_upper_limit.append(sublist_gravity[0])
                     else:
                         between_lower_and_upper.append(sublist_gravity[0])
-                my_dict_gravity = {'Low': below_lower_limit, 'Medium': between_lower_and_upper, 'High': above_upper_limit}
-                print(my_dict_gravity)
-
+                categories = {'Low': below_lower_limit, 'Medium': between_lower_and_upper, 'High': above_upper_limit}
+                tui.list_categories(categories)
                 tui.completed('Categorise entities by gravity')
             elif option1 == 5:
                 tui.started('Summarise entities by orbit')
+                #       - Iterate through each record in records and find entities that orbit a planet in the list of
+                #       orbited planets.  Assemble the found entities into a nested dictionary such that each entity can be
+                #       accessed as follows:
+                #           name_of_dict[planet_orbited][category]
+                #       where category is "small" if the mean radius of the entity is below 100 and "large" otherwise.
+                #       - Use the appropriate function in the module tui to list the categories.
+                tui.orbits()
+                planets_orbited = []
+                orbit_name = []
+                for planet in records:
+                    if planet[1] == 'TRUE':
+                        planets_orbited.append(planet[0])#created a list with all planets to be orbited
+                for planet_orbited in planets_orbited:
+                    for planet1 in records:
+                        if planet_orbited == planet1[21]:
+                            orbit_name.append(planet[0])????????????
 
                 tui.completed('Summarise entities by orbit')
             tui.completed('Process Data')
@@ -297,7 +305,7 @@ def run():
         # TODO: Your code here
         elif option == 4:
             tui.started('Save Data')
-
+            tui.save()
 
             tui.completed('Save Data')
         # Task 29: Check if the user selected the option for exiting.  If so, then do the following:
