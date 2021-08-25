@@ -126,7 +126,7 @@ def source_data_path():
     if ".csv" in file_path[-4:]:
         return file_path
     else:
-        print('Unsupported file extension,please make sure your file is ending in .csv')
+        print('Unsupported file extension, the file path is not ending in .csv')
         return None
 
 
@@ -199,15 +199,11 @@ def entity_details():
     :return: A list containing the name of an entity and a list of column indexes
     """
     # TODO: Your code here
-    # \n
-    entity_name = input('Please enter the name of an entity: ')#asking user to enter name of entity
-    index_list = [input('Please enter the list of integer column indexes: ')]#asking user to enter the list of indexes
-    entity_detail_index = []
-    #for index in index_list:
-        #entity_detail_index.append(????[index])
 
+    entity_name = input('Please enter the name of an entity: ')#asking user to enter name of entity
+    index_list = [int(item) for item in input('Please enter the list of integer column indexes separated by space: ').split()]
     final_list = [entity_name , index_list] #creating a new list containing name of entity and list of indexes
-    print(final_list) #displaying the new list on the screen
+    return final_list #displaying the new list on the screen
 
 
 
@@ -241,7 +237,7 @@ def list_entity(entity, cols=[]):
 
 
 
-def list_entities(entities,cols = []):#not solved yet
+def list_entities(entities,cols = []):
     """"
     Task 11: Display each entity in entities. Only the data for the specified column indexes will be displayed.
     If no column indexes have been specified, then all the data for an entity will be displayed.
@@ -267,14 +263,13 @@ def list_entities(entities,cols = []):#not solved yet
     if cols == []:
         print(entities)
     else:
-        i1 = 0
-        while i1 < len(entities):
-            for i in cols:
+        for i in range(len(entities)):
+            for i1 in cols:
                 entity1.append(entities[i][i1])
-        i1 += 1
-    print(entity1)
+        print(entity1)
 
-#list_entities([[1,2,3,4] , ['Mars','earth','df','gh'] , [123,2,3,4]],cols = [0,1])
+#list_entities([['Mars1', 1,2,3,4,5], ['Mars2', 1,2,3,4,5], ['Mars3', 1,2,3,4,5] , ['Mars4', 1,2,3,4,5]],cols = [0,2,3])
+
 
 def list_categories(categories = {}):
     """

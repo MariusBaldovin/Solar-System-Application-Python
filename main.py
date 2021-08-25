@@ -132,15 +132,23 @@ def run():
                 name = tui.entity_name()
                 temp_entity_list = [x[0] for x in records]
                 if name in temp_entity_list:
-                    for item_index in range(0, len(records)):
+                    for item_index in range(len(records)):
                         if name == records[item_index][0]:
                             tui.list_entity(entity=records[item_index],cols =[])#using function list_entity to print the entity details
                 else:
-                    Print('Entity not found')
+                    print('Entity not found')
                     continue
             elif option1 == 2:
                 tui.started('Retrieve entity details')
-                record = tui.entity_details()
+                entity_details = tui.entity_details()
+                temp_entity_index0 = [x[0] for x in records]
+                if entity_details[0] in temp_entity_index0:
+                    for item_index in range(len(records)):
+                        if entity_details[0] == records[item_index][0]:
+                             tui.list_entities(entities = [records[item_index]], cols = entity_details[1])
+                else:
+                    print('Entity details not found')
+                    continue
                 tui.completed('Retrieve entity details')
             elif option1 == 3:
                 tui.started('Categorise entities by type')
@@ -188,7 +196,7 @@ def run():
                 for planet_orbited in planets_orbited:
                     for planet1 in records:
                         if planet_orbited == planet1[21]:
-                            orbit_name.append(planet[0])????????????
+                            orbit_name.append(planet[0])   #????????????
 
                 tui.completed('Summarise entities by orbit')
             tui.completed('Process Data')
@@ -286,9 +294,21 @@ def run():
                 tui.completed('Summary of orbits')
             elif o == 4:
                 tui.started('Animate gravities')
-#    - Use your code from earlier to assemble a dictionary containing lists of entities grouped into
-#       low (below lower limit), medium and high (above upper limit) gravity categories.
-                visual.gravity_animation(  )
+                gravity_range = tui.gravity_range()
+                below_lower_limit = []
+                above_upper_limit = []
+                between_lower_and_upper = []
+                records_minus_first_line = records[1:]
+                for sublist_gravity in records_minus_first_line:
+                    if float(sublist_gravity[8]) < float(gravity_range[0]):
+                        below_lower_limit.append(sublist_gravity[0])
+                    elif float(sublist_gravity[8]) > float(gravity_range[1]):
+                        above_upper_limit.append(sublist_gravity[0])
+                    else:
+                        between_lower_and_upper.append(sublist_gravity[0])
+                categories = {'Low': below_lower_limit, 'Medium': between_lower_and_upper, 'High': above_upper_limit}
+
+                visual.gravity_animation(categories)
                 tui.completed('Animate gravities')
             tui.completed('Visualise Data')
 
