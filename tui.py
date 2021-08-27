@@ -201,10 +201,10 @@ def entity_details():
     # TODO: Your code here
 
     entity_name = input('Please enter the name of an entity: ')#asking user to enter name of entity
-    index_list = [int(item) for item in input('Please enter the list of integer column indexes separated by space: ').split()]
+    index_list = [int(item) for item in input('Please enter the list of integer column indexes separated by comma: ').split(',')]
     final_list = [entity_name , index_list] #creating a new list containing name of entity and list of indexes
     return final_list #displaying the new list on the screen
-
+print(entity_details())
 
 
 def list_entity(entity, cols=[]):
@@ -268,7 +268,7 @@ def list_entities(entities,cols = []):
                 entity1.append(entities[i][i1])
         print(entity1)
 
-#list_entities([['Mars1', 1,2,3,4,5], ['Mars2', 1,2,3,4,5], ['Mars3', 1,2,3,4,5] , ['Mars4', 1,2,3,4,5]],cols = [0,2,3])
+
 
 
 def list_categories(categories = {}):
@@ -298,14 +298,12 @@ def gravity_range():
     :return: a tuple with the lower and upper limits
     """
     # TODO: Your code here
-    # ask user to input a decimal value for the gravity lower limit
     lower_limit = float(input('Please enter the gravity lower limit: ' ))
-   #ask the user to enter a decimal value for gravity upper limit
     upper_limit = float(input('Please enter the gravity upper limit: ' ))
 
-    tup = (lower_limit, upper_limit) #transform the 2 variables into a tuple named tup
+    tup = (lower_limit, upper_limit)
 
-    return tup #returning a tuple with (lower limit , upper limit) on the screen
+    return tup
 
 
 
@@ -323,8 +321,10 @@ def orbits():
     :return: a list of entity names
     """
     # TODO: Your code here
-    entity_names = [input('Please enter the list of  entity names: ')] #ask user to input elements inside a list[]
-    return entity_names #returning  the list on the screen
+    entity_names = input('Please enter the list of entity names separated by commas: ')
+    entity_names1 = entity_names.split(",")
+    return entity_names1
+
 
 
 
