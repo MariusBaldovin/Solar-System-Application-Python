@@ -73,4 +73,8 @@ def gravity_animation(categories):
     :param categories: A dictionary containing "low", "medium" and "high" gravity entities
     :return: Does not return anything
     """
+    x = [len(categories['Low']) , len(categories['Medium']) , len(categories['High'])]
+    y = ['Low' , 'Medium' , 'High']
+    fig, ax = plt.subplots()
+
 
