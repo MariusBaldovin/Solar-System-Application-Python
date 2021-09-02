@@ -1,13 +1,12 @@
-import collections
 import csv
 
 import matplotlib.pyplot as plt
 
 import matplotlib.animation as animation
 
-import numpy as np
-
 import main
+
+
 
 def entities_pie(categories):
 

@@ -2,9 +2,9 @@
 # TODO: Your code here
 import csv
 import json
-
 import tui
 import visual
+from abc import ABC,abstractmethod
 
 
 
@@ -189,8 +189,19 @@ def run():
                 #           name_of_dict[planet_orbited][category]
                 #       where category is "small" if the mean radius of the entity is below 100 and "large" otherwise.
                 #       - Use the appropriate function in the module tui to list the categories.
-                tui.orbits()
-                planets_orbited = []
+                orbits = tui.orbits()
+                orbits_list = []
+                for item_index in range(len(records)):
+                    for orbit in orbits:
+                        if orbit == records[item_index][21]:
+                            orbits_list.append(records[item_index][0])
+                small_category = []
+                large_category = []
+                for item_index in range(len(records)):
+                    for category in orbits_list:
+                    if category < records[item_index][10]:
+
+                """planets_orbited = []
                 orbit_name = []
                 for planet in records:
                     if planet[1] == 'TRUE':
@@ -198,7 +209,7 @@ def run():
                 for planet_orbited in planets_orbited:
                     for planet1 in records:
                         if planet_orbited == planet1[21]:
-                            orbit_name.append(planet[0])   #????????????
+                            orbit_name.append(planet[0])   #????????????"""
 
                 tui.completed('Summarise entities by orbit')
             tui.completed('Process Data')
@@ -328,28 +339,30 @@ def run():
         elif option == 4:
             tui.started('Save Data')
             tui.save()
-            class :
-                #def __init__(self, saveJSON):
-                    #self.saveJSON = saveJSON
-                #def dictionary(self,dictionary):
-                    #self.dictionary = dictionary
-            planets = []
-            nonplanets = []
-            for sublist in records:
-                if sublist[1] == 'FALSE':
-                    nonplanets.append(sublist)
-                elif sublist[1] == 'TRUE':
-                    planets.append(sublist)
-            planets.sort()  #sort the list of planets in alphabetical order
-            nonplanets.sort() #sort the list of nonplanets in alphabetical order
-            planets_dictionary = {d[0]: d[1:] for d in planets} #create a dictionary with the key the name of the planet and the values
-            nonplanets_dictionary = {d[0]: d[1:] for d in nonplanets} #create a dictionary with the key the name of the nonplanet and the values
-            planets_and_nonplanets_dict = {'Planets': planets_dictionary, 'Non-planets': nonplanets_dictionary}#create a nested dictionary with planets and nonplanets
-            print(planets_and_nonplanets_dict)
+            class Abstractmethod(ABC) :
+                @abstractmethod
+                def list_of_planets_and_non_planets(self):
+                    pass
+            class planets_and_nonplanets(Abstractmethod):
+                def list_of_planets_and_non_planets(self):
+                    planets = []
+                    nonplanets = []
+                    for sublist in records:
+                        if sublist[1] == 'FALSE':
+                            nonplanets.append(sublist)
+                        elif sublist[1] == 'TRUE':
+                            planets.append(sublist)
+                    planets.sort()  #sort the list of planets in alphabetical order
+                    nonplanets.sort() #sort the list of nonplanets in alphabetical order
+                    planets_dictionary = {d[0]: d[1:] for d in planets} #create a dictionary with the key the name of the planet and the values
+                    nonplanets_dictionary = {d[0]: d[1:] for d in nonplanets} #create a dictionary with the key the name of the nonplanet and the values
+                    planets_and_nonplanets_dict = {'Planets': planets_dictionary, 'Non-planets': nonplanets_dictionary}#create a nested dictionary with planets and nonplanets
+                    print(planets_and_nonplanets_dict)
+
             with open("C:\\Users\\maryus666\\Desktop\\QHO426\\Saved_data" , "w") as saved_data:
                 json.dump(planets_and_nonplanets_dict, saved_data)
 
-                #def alphabetical(self, ):
+
             tui.completed('Save Data')
         # Task 29: Check if the user selected the option for exiting.  If so, then do the following:
         # break out of the loop
