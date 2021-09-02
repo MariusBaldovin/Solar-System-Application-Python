@@ -204,7 +204,7 @@ def entity_details():
     index_list = [int(item) for item in input('Please enter the list of integer column indexes separated by comma: ').split(',')]
     final_list = [entity_name , index_list] #creating a new list containing name of entity and list of indexes
     return final_list #displaying the new list on the screen
-print(entity_details())
+
 
 
 def list_entity(entity, cols=[]):

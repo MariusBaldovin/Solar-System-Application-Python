@@ -1,6 +1,8 @@
 # Task 17: Import the modules csv, tui and visual
 # TODO: Your code here
 import csv
+import json
+
 import tui
 import visual
 
@@ -326,7 +328,28 @@ def run():
         elif option == 4:
             tui.started('Save Data')
             tui.save()
+            class :
+                #def __init__(self, saveJSON):
+                    #self.saveJSON = saveJSON
+                #def dictionary(self,dictionary):
+                    #self.dictionary = dictionary
+            planets = []
+            nonplanets = []
+            for sublist in records:
+                if sublist[1] == 'FALSE':
+                    nonplanets.append(sublist)
+                elif sublist[1] == 'TRUE':
+                    planets.append(sublist)
+            planets.sort()  #sort the list of planets in alphabetical order
+            nonplanets.sort() #sort the list of nonplanets in alphabetical order
+            planets_dictionary = {d[0]: d[1:] for d in planets} #create a dictionary with the key the name of the planet and the values
+            nonplanets_dictionary = {d[0]: d[1:] for d in nonplanets} #create a dictionary with the key the name of the nonplanet and the values
+            planets_and_nonplanets_dict = {'Planets': planets_dictionary, 'Non-planets': nonplanets_dictionary}#create a nested dictionary with planets and nonplanets
+            print(planets_and_nonplanets_dict)
+            with open("C:\\Users\\maryus666\\Desktop\\QHO426\\Saved_data" , "w") as saved_data:
+                json.dump(planets_and_nonplanets_dict, saved_data)
 
+                #def alphabetical(self, ):
             tui.completed('Save Data')
         # Task 29: Check if the user selected the option for exiting.  If so, then do the following:
         # break out of the loop
