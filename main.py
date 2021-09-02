@@ -186,30 +186,32 @@ def run():
                 #       - Iterate through each record in records and find entities that orbit a planet in the list of
                 #       orbited planets.  Assemble the found entities into a nested dictionary such that each entity can be
                 #       accessed as follows:
-                #           name_of_dict[planet_orbited][category]
+
                 #       where category is "small" if the mean radius of the entity is below 100 and "large" otherwise.
                 #       - Use the appropriate function in the module tui to list the categories.
                 orbits = tui.orbits()
-                orbits_list = []
-                for item_index in range(len(records)):
-                    for orbit in orbits:
-                        if orbit == records[item_index][21]:
-                            orbits_list.append(records[item_index][0])
+                #orbits_list = []
                 small_category = []
                 large_category = []
                 for item_index in range(len(records)):
-                    for category in orbits_list:
-                    if category < records[item_index][10]:
+                    for orbit in orbits:
+                        if orbit == records[item_index][21]:
+                            if float(records[1:][item_index][10]) < 100:
+                                small_category.append(records[item_index][0])
+                            else:
+                                large_category.append(records[item_index][0])
 
-                """planets_orbited = []
-                orbit_name = []
-                for planet in records:
-                    if planet[1] == 'TRUE':
-                        planets_orbited.append(planet[0])#created a list with all planets to be orbited
-                for planet_orbited in planets_orbited:
-                    for planet1 in records:
-                        if planet_orbited == planet1[21]:
-                            orbit_name.append(planet[0])   #????????????"""
+                nested_dict = {orbit: {'small': small_category} , 'dict2': {'large': large_category}}
+                            #           name_of_dict[planet_orbited][category]
+                print(nested_dict)
+                print()
+                print(nested_dict['dict1']['small'])
+
+
+        
+
+
+
 
                 tui.completed('Summarise entities by orbit')
             tui.completed('Process Data')
