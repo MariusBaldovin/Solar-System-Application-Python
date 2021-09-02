@@ -186,13 +186,13 @@ def run():
                 #       - Iterate through each record in records and find entities that orbit a planet in the list of
                 #       orbited planets.  Assemble the found entities into a nested dictionary such that each entity can be
                 #       accessed as follows:
-
+                #           name_of_dict[planet_orbited][category]
                 #       where category is "small" if the mean radius of the entity is below 100 and "large" otherwise.
                 #       - Use the appropriate function in the module tui to list the categories.
                 orbits = tui.orbits()
-                #orbits_list = []
                 small_category = []
                 large_category = []
+                nested_dict = { }
                 for item_index in range(len(records)):
                     for orbit in orbits:
                         if orbit == records[item_index][21]:
@@ -200,15 +200,14 @@ def run():
                                 small_category.append(records[item_index][0])
                             else:
                                 large_category.append(records[item_index][0])
-
-                nested_dict = {orbit: {'small': small_category} , 'dict2': {'large': large_category}}
-                            #           name_of_dict[planet_orbited][category]
-                print(nested_dict)
-                print()
-                print(nested_dict['dict1']['small'])
+                for orbit1  in orbits:
+                    nested_dict = {orbit1 : {'small' : small_category }} , {orbit1 : {'large' :  large_category}}
+                    print(nested_dict)#the code is working only if the input is a single planet to be orbited.If the input is a list of planets the result is wrong
 
 
-        
+
+
+
 
 
 
