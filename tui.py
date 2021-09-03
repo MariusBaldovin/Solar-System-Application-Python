@@ -30,14 +30,12 @@ def menu():
 
     """
     # TODO: Your code here
-    #Showing the menu on the screen
     print('Load Data')
     print('Process Data')
     print('Visualise Data')
     print('Save Data')
     print('Exit')
     print()
-    #Askink the user to input his selection
     option = input('Please type in your option: ')
     if (option == 'Load Data'):
         return 1
@@ -50,7 +48,7 @@ def menu():
     elif (option == 'Exit'):
         return 5
     else:
-        #print('Invalid option,be aware the option  is case sensitive')
+        print('Invalid option,be aware the option  is case sensitive')
         return None
 
 

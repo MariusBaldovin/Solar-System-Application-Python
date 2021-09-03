@@ -184,34 +184,20 @@ def run():
             elif option1 == 5:
                 tui.started('Summarise entities by orbit')
                 orbits = tui.orbits()
+                nested_dict = { }
                 small_category = []
                 large_category = []
-                nested_dict = { }
                 for item_index in range(len(records)):
                     for orbit in orbits:
                         if orbit == records[item_index][21]:
                             if float(records[1:][item_index][10]) < 100:
                                 small_category.append(records[item_index][0])
-
                             else:
                                 large_category.append(records[item_index][0])
-                print(small_category)
-                print(large_category)
-
-
-
-#the code is working only if the input is a single planet to be orbited.If the input is a list of planets the result is wrong
-
-
-
-
-
-
-
-
-
+                nested_dict = {orbit: {'small': small_category , 'large': large_category}}
+                print(nested_dict)
                 tui.completed('Summarise entities by orbit')
-            tui.completed('Process Data')
+                tui.completed('Process Data')
 
 
 
@@ -302,7 +288,19 @@ def run():
             elif o == 3:
                 tui.started('Summary of orbits')
 #Use your code from earlier to assemble a nested dictionary of orbiting planets.
-                visual.orbits()
+                orbits = tui.orbits()
+                nested_dict = {}
+                small_category = []
+                large_category = []
+                for item_index in range(len(records)):
+                    for orbit in orbits:
+                        if orbit == records[item_index][21]:
+                            if float(records[1:][item_index][10]) < 100:
+                                small_category.append(records[item_index][0])
+                            else:
+                                large_category.append(records[item_index][0])
+                orbited_planets = {orbit: {'small': small_category, 'large': large_category}}
+                visual.orbits(orbited_planets)
                 tui.completed('Summary of orbits')
             elif o == 4:
                 tui.started('Animate gravities')
@@ -379,4 +377,4 @@ if __name__ == "__main__":
 
  run()
 
-# C:\Users\maryus666\Desktop\QHO426\QHO426\data\sol_data.csv
+#   C:\\Users\\maryus666\\Desktop\\QHO426\\QHO426\\data\\sol_data.csv
