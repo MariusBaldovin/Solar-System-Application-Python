@@ -186,16 +186,25 @@ def run():
                 tui.started('Summarise entities by orbit')
                 orbits = tui.orbits()
                 nested_dict = { }
-                small_category = []
-                large_category = []
-                for item_index in range(len(records)):
-                    for orbit in orbits:
+                #small_category = []
+                #large_category = []
+
+                for orbit in orbits:
+                    small_category = []
+                    large_category = []
+                    for item_index in range(len(records)):
                         if orbit == records[item_index][21]:
                             if float(records[1:][item_index][10]) < 100:
                                 small_category.append(records[item_index][0])
                             else:
                                 large_category.append(records[item_index][0])
-                nested_dict = {orbit: {'small': small_category , 'large': large_category}}
+                    nested_dict[orbit] = {}
+                    nested_dict[orbit]['small'] = small_category
+                    nested_dict[orbit]['large'] = large_category
+
+
+
+
                 print(nested_dict)
                 tui.completed('Summarise entities by orbit')
                 tui.completed('Process Data')
