@@ -30,25 +30,25 @@ def menu():
 
     """
     # TODO: Your code here
-    print('Load Data')
-    print('Process Data')
-    print('Visualise Data')
-    print('Save Data')
-    print('Exit')
+    print('1. Load Data')
+    print('2. Process Data')
+    print('3. Visualise Data')
+    print('4. Save Data')
+    print('5. Exit')
     print()
     option = input('Please type in your option: ')
-    if (option == 'Load Data'):
+    if (option == '1'):
         return 1
-    elif (option == 'Process Data'):
+    elif (option ==  '2'):
         return 2
-    elif (option == 'Visualise Data'):
+    elif (option == '3'):
         return 3
-    elif (option == 'Save Data'):
+    elif (option ==  '4'):
         return 4
-    elif (option == 'Exit'):
+    elif (option ==  '5'):
         return 5
     else:
-        print('Invalid option,be aware the option  is case sensitive')
+        print('Invalid option')
         return None
 
 
@@ -147,26 +147,26 @@ def process_type():
     # TODO: Your code here
     print('How the data should be processed? ')
     print()
-    print('Retrieve entity')
-    print('Retrieve entity details')
-    print('Categorise entities by type')
-    print('Categorise entities by gravity')
-    print('Summarise entities by orbit')
-    print()
+    print('1. Retrieve entity')
+    print('2. Retrieve entity details')
+    print('3. Categorise entities by type')
+    print('4. Categorise entities by gravity')
+    print('5. Summarise entities by orbit')
+
 #Askink the user to input his selection
     option = input('Please type in your option: ')
-    if (option == 'Retrieve entity'):
+    if (option == '1'):
         return 1
-    elif (option == 'Retrieve entity details'):
+    elif (option == '2'):
         return 2
-    elif (option == 'Categorise entities by type'):
+    elif (option == '3'):
         return 3
-    elif (option == 'Categorise entities by gravity'):
+    elif (option == '4'):
         return 4
-    elif (option == 'Summarise entities by orbit'):
+    elif (option == '5'):
         return 5
     else:
-        print('Invalid option,be aware the option is case sensitive')
+        print('Invalid option')
         return None
 
 
@@ -346,23 +346,23 @@ def visualise():
     # TODO: Your code here
     print('How the data should be visualised? ')
     print()
-    print('Entities by type')
-    print('Entities by gravity')
-    print('Summary of orbits')
-    print('Animate gravities')
+    print('1. Entities by type')
+    print('2. Entities by gravity')
+    print('3. Summary of orbits')
+    print('4. Animate gravities')
     print()
     # Asking the user to input his selection
     option = input('Please type in your option: ')
-    if (option == 'Entities by type'):
+    if (option == '1'):
         return 1
-    elif (option == 'Entities by gravity'):
+    elif (option == '2'):
         return 2
-    elif (option == 'Summary of orbits'):
+    elif (option == '3'):
         return 3
-    elif (option == 'Animate gravities'):
+    elif (option == '4'):
         return 4
     else:
-        print('Invalid option,be aware the option is case sensitive')
+        print('Invalid option')
         return None
 
 
@@ -383,11 +383,11 @@ def save():
     # TODO: Your code here
     print('How the data should be saved? ')
     print()
-    print('Export as JSON')
+    print('1. Export as JSON')
     print()
     option = input('Please type in your option: ')
-    if (option == 'Export as JSON'):
+    if (option == '1'):
         return 1
     else:
-        print('Invalid selection(Beware the option is case sensitive')
+        print('Invalid selection')
         return None

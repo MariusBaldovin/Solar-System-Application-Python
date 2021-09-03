@@ -1,10 +1,14 @@
-import csv
+
 
 import matplotlib.pyplot as plt
 
 import matplotlib.animation as animation
 
-import main
+from matplotlib.animation import FuncAnimation
+
+import numpy as np
+
+
 
 
 
@@ -22,6 +26,7 @@ def entities_pie(categories):
     sizes = [len(categories['Planets']), len(categories['Non-Planets'])]
     labels = ['Planets', 'Non-Planets']
     plt.pie(sizes, labels=labels)
+    plt.legend(title = 'Entities by type')
     plt.show()
 
 
@@ -38,11 +43,15 @@ def entities_bar(categories):
     data = [len(categories['Low']), len(categories['Medium']), len(categories['High'])]
 
     plt.bar(['Low', 'Medium', 'High'], data)
+    plt.title('Entities by gravity')
+    plt.xlabel('Gravity type')
+    plt.ylabel('Number of entities')
     plt.show()
 
 
 def orbits(summary):
-    """
+
+      """
         Task 26: Display subplots where each subplot shows the "small" and "large" entities that orbit the planet.
 
         Summary is a nested dictionary of the form:
@@ -61,12 +70,15 @@ def orbits(summary):
         """
 
 
-    data = [len(summary.values()) , len(summary.values())]
-    plt.bar(['small', 'large'], data)
-    plt.show()
+    #plt.show()
+
+    #data = [len(summary.values()) , len(summary.values())]
+    #plt.bar(['small', 'large'], data)
 
 
-def gravity_animation(categories):
+
+def gravity_animation():
+
     """
     Task 27: Display an animation of "low", "medium" and "high" gravities.
 
@@ -76,6 +88,13 @@ def gravity_animation(categories):
     :param categories: A dictionary containing "low", "medium" and "high" gravity entities
     :return: Does not return anything
     """
-    x = [len(categories['Low']), len(categories['Medium']), len(categories['High'])]
-    y = ['Low', 'Medium', 'High']
-    fig, ax = plt.subplots()
+    #x = [len(categories['Low']), len(categories['Medium']), len(categories['High'])]
+    #y = ['Low', 'Medium', 'High']
+    #fig, ax = plt.subplots()
+    #fig = plt.figure()
+    #ax = plt.axes()
+
+    #plt.show()
+
+gravity_animation()
+
