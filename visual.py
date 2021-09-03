@@ -8,8 +8,8 @@ import main
 
 
 
-def entities_pie(categories):
 
+def entities_pie(categories):
     """
     Task 24: Display a single subplot that shows a pie chart for categories.
 
@@ -19,16 +19,14 @@ def entities_pie(categories):
     :return: Does not return anything
     """
 
-    sizes = [len(categories['Planets']) , len(categories['Non-Planets'])]
+    sizes = [len(categories['Planets']), len(categories['Non-Planets'])]
     labels = ['Planets', 'Non-Planets']
     plt.pie(sizes, labels=labels)
     plt.show()
 
 
-
-
-
 def entities_bar(categories):
+
     """
     Task 25: Display a single subplot that shows a bar chart for categories.
 
@@ -37,29 +35,35 @@ def entities_bar(categories):
     :param categories: A dictionary with entities categorised into 'low', 'medium' and 'high' gravity
     :return: Does not return anything
     """
-    data = [len(categories['Low']) , len(categories['Medium']) , len(categories['High'])]
+    data = [len(categories['Low']), len(categories['Medium']), len(categories['High'])]
 
-    plt.bar(['Low' , 'Medium' , 'High'] , data)
+    plt.bar(['Low', 'Medium', 'High'], data)
     plt.show()
+
 
 def orbits(summary):
     """
-    Task 26: Display subplots where each subplot shows the "small" and "large" entities that orbit the planet.
+        Task 26: Display subplots where each subplot shows the "small" and "large" entities that orbit the planet.
 
-    Summary is a nested dictionary of the form:
-    summary = {
-        "orbited planet": {
-            "small": [entity, entity, entity],
-            "large": [entity, entity]
+        Summary is a nested dictionary of the form:
+        summary = {
+            "orbited planet": {
+                "small": [entity, entity, entity],
+                "large": [entity, entity]
+            }
         }
-    }
 
-    The function should display for each orbited planet in summary. Each subplot should show a bar chart with the
-    number of "small" and "large" orbiting entities.
+        The function should display for each orbited planet in summary. Each subplot should show a bar chart with the
+        number of "small" and "large" orbiting entities.
 
-    :param summary: A dictionary containing the "small" and "large" entities for each orbited planet.
-    :return: Does not return anything
-    """
+        :param summary: A dictionary containing the "small" and "large" entities for each orbited planet.
+        :return: Does not return anything
+        """
+
+
+    data = [len(summary.values()) , len(summary.values())]
+    plt.bar(['small', 'large'], data)
+    plt.show()
 
 
 def gravity_animation(categories):
@@ -72,8 +76,6 @@ def gravity_animation(categories):
     :param categories: A dictionary containing "low", "medium" and "high" gravity entities
     :return: Does not return anything
     """
-    x = [len(categories['Low']) , len(categories['Medium']) , len(categories['High'])]
-    y = ['Low' , 'Medium' , 'High']
+    x = [len(categories['Low']), len(categories['Medium']), len(categories['High'])]
+    y = ['Low', 'Medium', 'High']
     fig, ax = plt.subplots()
-
-

@@ -5,6 +5,7 @@ import json
 import tui
 import visual
 from abc import ABC,abstractmethod
+import matplotlib.pyplot as plt
 
 
 
@@ -299,8 +300,8 @@ def run():
                                 small_category.append(records[item_index][0])
                             else:
                                 large_category.append(records[item_index][0])
-                orbited_planets = {orbit: {'small': small_category, 'large': large_category}}
-                visual.orbits(orbited_planets)
+                summary = {orbit: {'small': small_category, 'large': large_category}}
+                visual.orbits(summary)
                 tui.completed('Summary of orbits')
             elif o == 4:
                 tui.started('Animate gravities')
