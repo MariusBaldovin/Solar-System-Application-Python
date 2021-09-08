@@ -5,14 +5,16 @@ import json
 import tui
 import visual
 from abc import ABC,abstractmethod
-import matplotlib.pyplot as plt
+import random
+
+
 
 
 
 # Task 18: Create an empty list named 'records'.
 # This will be used to store the date read from the source data file.
 # TODO: Your code here
-records= []
+records = [ ]
 
 
 def run():
@@ -141,6 +143,7 @@ def run():
                 else:
                     print('Entity not found')
                     continue
+                tui.completed('Process Data')
             elif option1 == 2:
                 tui.started('Retrieve entity details')
                 entity_details = tui.entity_details()
@@ -153,6 +156,7 @@ def run():
                     print('Entity details not found')
                     continue
                 tui.completed('Retrieve entity details')
+                tui.completed('Process Data')
             elif option1 == 3:
                 tui.started('Categorise entities by type')
                 planets = []
@@ -162,9 +166,10 @@ def run():
                         nonplanets.append(sublist[0])
                     elif sublist[1] == 'TRUE':
                         planets.append(sublist[0])
-                categories = {'Planets': planets , 'Non-planets': nonplanets}
-                tui.list_categories(categories)
+                planets_and_nonplanets_dictionary = {'Planets': planets, 'Non-planets': nonplanets}
+                tui.list_categories(planets_and_nonplanets_dictionary)
                 tui.completed('Categorise entities by type')
+                tui.completed('Process Data')
             elif option1 == 4:
                 tui.started('Categorise entities by gravity')
                 gravity_range = tui.gravity_range()
@@ -182,13 +187,11 @@ def run():
                 categories = {'Low': below_lower_limit, 'Medium': between_lower_and_upper, 'High': above_upper_limit}
                 tui.list_categories(categories)
                 tui.completed('Categorise entities by gravity')
+                tui.completed('Process Data')
             elif option1 == 5:
                 tui.started('Summarise entities by orbit')
                 orbits = tui.orbits()
                 nested_dict = { }
-                #small_category = []
-                #large_category = []
-
                 for orbit in orbits:
                     small_category = []
                     large_category = []
@@ -201,10 +204,6 @@ def run():
                     nested_dict[orbit] = {}
                     nested_dict[orbit]['small'] = small_category
                     nested_dict[orbit]['large'] = large_category
-
-
-
-
                 print(nested_dict)
                 tui.completed('Summarise entities by orbit')
                 tui.completed('Process Data')
@@ -274,9 +273,9 @@ def run():
                     elif sublist[1] == 'TRUE':
                         planets.append(sublist[0])
                 categories = {'Planets': planets, 'Non-Planets': nonplanets}
-
                 visual.entities_pie(categories)
                 tui.completed('Entities by type')
+                tui.completed('Visualise Data')
             elif o == 2:
                 tui.started('Entities by gravity')
                 gravity_range = tui.gravity_range()
@@ -295,11 +294,10 @@ def run():
                                    'High': above_upper_limit}
                 visual.entities_bar(categories)
                 tui.completed('Entities by gravity')
+                tui.completed('Visualise Data')
             elif o == 3:
                 tui.started('Summary of orbits')
-#Use your code from earlier to assemble a nested dictionary of orbiting planets.
                 orbits = tui.orbits()
-                nested_dict = {}
                 small_category = []
                 large_category = []
                 for item_index in range(len(records)):
@@ -312,6 +310,7 @@ def run():
                 summary = {orbit: {'small': small_category, 'large': large_category}}
                 visual.orbits(summary)
                 tui.completed('Summary of orbits')
+                tui.completed('Visualise Data')
             elif o == 4:
                 tui.started('Animate gravities')
                 gravity_range = tui.gravity_range()
@@ -327,10 +326,9 @@ def run():
                     else:
                         between_lower_and_upper.append(sublist_gravity[0])
                 categories = {'Low': below_lower_limit, 'Medium': between_lower_and_upper, 'High': above_upper_limit}
-
                 visual.gravity_animation(categories)
                 tui.completed('Animate gravities')
-            tui.completed('Visualise Data')
+                tui.completed('Visualise Data')
 
         # Task 28: Check if the user selected the option for saving data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the save data operation has started.
@@ -387,4 +385,4 @@ if __name__ == "__main__":
 
  run()
 
-#   C:\\Users\\maryus666\\Desktop\\QHO426\\QHO426\\data\\sol_data.csv
+#C:\\Users\\maryus666\\Desktop\\QHO426\\QHO426\\data\\sol_data.csv

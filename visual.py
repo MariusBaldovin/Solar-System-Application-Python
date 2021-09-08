@@ -1,4 +1,4 @@
-
+import random
 
 import matplotlib.pyplot as plt
 
@@ -6,7 +6,15 @@ import matplotlib.animation as animation
 
 from matplotlib.animation import FuncAnimation
 
-import numpy as np
+import random
+
+
+
+
+
+
+
+
 
 
 
@@ -77,7 +85,7 @@ def orbits(summary):
 
 
 
-def gravity_animation():
+def gravity_animation(categories):
 
     """
     Task 27: Display an animation of "low", "medium" and "high" gravities.
@@ -88,13 +96,45 @@ def gravity_animation():
     :param categories: A dictionary containing "low", "medium" and "high" gravity entities
     :return: Does not return anything
     """
-    #x = [len(categories['Low']), len(categories['Medium']), len(categories['High'])]
-    #y = ['Low', 'Medium', 'High']
-    #fig, ax = plt.subplots()
-    #fig = plt.figure()
-    #ax = plt.axes()
+    """
+    #fig = plt.figure(figsize=(8, 6))
+    #axes = fig.add_subplot(1, 1, 1)
+    fig, axes = plt.subplots()
+    axes.set_ylim(0, 266)
+    axes.set_xlim('low', 'medium', 'large')
+    line, = axes.plot(0,0)
+    x_data = []
+    def animate(i):
+       x_data.append(i + int(len(categories['low'])))
+       x_data.append(i + int(len(categories['medium'])))
+       x_data.append(i + int(len(categories['large'])))
+       line.set_xdata(x_data)
+       #plt.bar(['low', 'medium', 'large'], [l1, l2, l3])
+    #plt.title('Entities by gravity animation')
+    ani = FuncAnimation(fig = fig, func = animate, interval = 100)
+    plt.show()
+    """
+    fig = plt.figure(figsize=(8, 6))
+    axes = fig.add_subplot(1, 1, 1)
+    axes.set_ylim(0, 266)
+    plt.style.use("seaborn")
+    lst1 = [0, ((len(categories['Low']))/4), ((len(categories['Low']))/2), (3*(len(categories['Low']))/4), (len(categories['Low']))]
+    lst2 = [0, ((len(categories['Medium']))/4), ((len(categories['Medium']))/2), (3*(len(categories['Medium']))/4), (len(categories['Medium']))]
+    lst3 = [0, ((len(categories['High']))/4), ((len(categories['High']))/2), (3*(len(categories['High']))/4), (len(categories['High']))]
+    y1 = [ ]
+    y2 = [ ]
+    y3 = [ ]
+    def animate(i):
+        y1 = lst1[i]
+        y2 = lst2[i]
+        y3 = lst3[i]
+        plt.bar(["Low", "Medium", "High"], [y1, y2, y3])
+    plt.title("Entities by gravity animation")
+    ani = FuncAnimation(fig, animate)
 
-    #plt.show()
 
-gravity_animation()
+
+    plt.show()
+
+
 
