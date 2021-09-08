@@ -96,24 +96,6 @@ def gravity_animation(categories):
     :param categories: A dictionary containing "low", "medium" and "high" gravity entities
     :return: Does not return anything
     """
-    """
-    #fig = plt.figure(figsize=(8, 6))
-    #axes = fig.add_subplot(1, 1, 1)
-    fig, axes = plt.subplots()
-    axes.set_ylim(0, 266)
-    axes.set_xlim('low', 'medium', 'large')
-    line, = axes.plot(0,0)
-    x_data = []
-    def animate(i):
-       x_data.append(i + int(len(categories['low'])))
-       x_data.append(i + int(len(categories['medium'])))
-       x_data.append(i + int(len(categories['large'])))
-       line.set_xdata(x_data)
-       #plt.bar(['low', 'medium', 'large'], [l1, l2, l3])
-    #plt.title('Entities by gravity animation')
-    ani = FuncAnimation(fig = fig, func = animate, interval = 100)
-    plt.show()
-    """
     fig = plt.figure(figsize=(8, 6))
     axes = fig.add_subplot(1, 1, 1)
     axes.set_ylim(0, 266)
@@ -125,15 +107,13 @@ def gravity_animation(categories):
     y2 = [ ]
     y3 = [ ]
     def animate(i):
-        y1 = lst1[i]
-        y2 = lst2[i]
-        y3 = lst3[i]
-        plt.bar(["Low", "Medium", "High"], [y1, y2, y3])
+        if i <= 4: # without this if statement i wqs getting an error index out of range.
+            y1 = lst1[i]
+            y2 = lst2[i]
+            y3 = lst3[i]
+            plt.bar(["Low", "Medium", "High"], [y1, y2, y3])
     plt.title("Entities by gravity animation")
     ani = FuncAnimation(fig, animate)
-
-
-
     plt.show()
 
 
