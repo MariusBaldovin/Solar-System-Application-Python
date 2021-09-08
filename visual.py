@@ -50,10 +50,10 @@ def entities_bar(categories):
     """
     data = [len(categories['Low']), len(categories['Medium']), len(categories['High'])]
 
-    plt.bar(['Low', 'Medium', 'High'], data)
-    plt.title('Entities by gravity')
-    plt.xlabel('Gravity type')
-    plt.ylabel('Number of entities')
+    plt.bar(['Low', 'Medium', 'High'], data, color=[ 'cyan', 'green', 'red'])
+    plt.title('Entities by gravity', color = 'blue')
+    plt.xlabel('Gravity type', color = 'blue')
+    plt.ylabel('Number of entities', color = 'blue')
     plt.show()
 
 
@@ -111,8 +111,10 @@ def gravity_animation(categories):
             y1 = lst1[i]
             y2 = lst2[i]
             y3 = lst3[i]
-            plt.bar(["Low", "Medium", "High"], [y1, y2, y3])
-    plt.title("Entities by gravity animation")
+            plt.bar(["Low", "Medium", "High"], [y1, y2, y3], color=[ 'cyan', 'green', 'red'])
+    plt.title("Entities by gravity animation", color= 'blue')
+    plt.xlabel('Gravity type' , color = 'blue')
+    plt.ylabel('Number of entities', color = 'blue')
     ani = FuncAnimation(fig, animate)
     plt.show()
 
