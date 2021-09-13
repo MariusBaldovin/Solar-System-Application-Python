@@ -4,17 +4,12 @@ import csv
 import json
 import tui
 import visual
-from abc import ABC,abstractmethod
-import random
-
-
-
-
+from abc import ABC, abstractmethod
 
 # Task 18: Create an empty list named 'records'.
 # This will be used to store the date read from the source data file.
 # TODO: Your code here
-records = [ ]
+records = []
 
 
 def run():
@@ -23,16 +18,12 @@ def run():
     # TODO: Your code here
     tui.welcome()
 
-
     while True:
         # Task 20: Using the appropriate function in the module tui, display a menu of options
         # for the different operations that can be performed on the data.
         # Assign the selected option to a suitable local variable
         # TODO: Your code here
         option = tui.menu()
-
-
-
 
         # Task 21: Check if the user selected the option for loading data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data loading
@@ -51,20 +42,20 @@ def run():
         global records
         if option == 1:
             tui.started('Load Data')
-            try:
-                with open(tui.source_data_path(),'r') as csv_file:
-                    reader = csv.reader(csv_file)
-                    for temp_list in reader:
-                        records.append(temp_list)
-            except FileNotFoundError:
-                print('Data file does not exist')
-                print()
+            file_path = tui.source_data_path()
+            if file_path == None:
+                continue
+            else:
+                try:
+                    with open(file_path, 'r') as csv_file:
+                        reader = csv.reader(csv_file)
+                        for temp_list in reader:
+                            records.append(temp_list)
+                except FileNotFoundError:
+                    print('Data file does not exist')
+                    print()
             tui.completed('Load Data')
             print()
-
-
-
-
         # Task 22: Check if the user selected the option for processing data.  If so, then do the following:
         # - Use the appropriate function in the module tui to display a message to indicate that the data processing
         # operation has started.
@@ -139,7 +130,7 @@ def run():
                 if name in temp_entity_list:
                     for item_index in range(len(records)):
                         if name == records[item_index][0]:
-                            tui.list_entity(entity=records[item_index],cols =[])#using function list_entity to print the entity details
+                            tui.list_entity(entity=records[item_index], cols=[])
                 else:
                     print('Entity not found')
                     continue
@@ -151,7 +142,7 @@ def run():
                 if entity_details[0] in temp_entity_index0:
                     for item_index in range(len(records)):
                         if entity_details[0] == records[item_index][0]:
-                             tui.list_entities(entities = [records[item_index]], cols = entity_details[1])
+                            tui.list_entities(entities = [records[item_index]], cols = entity_details[1])
                 else:
                     print('Entity details not found')
                     continue
@@ -191,7 +182,7 @@ def run():
             elif option1 == 5:
                 tui.started('Summarise entities by orbit')
                 orbits = tui.orbits()
-                nested_dict = { }
+                nested_dict = {}
                 for orbit in orbits:
                     small_category = []
                     large_category = []
@@ -207,11 +198,6 @@ def run():
                 print(nested_dict)
                 tui.completed('Summarise entities by orbit')
                 tui.completed('Process Data')
-
-
-
-
-
 
         # Task 23: Check if the user selected the option for visualising data.  If so, then do the following:
         # - Use the appropriate function in the module tui to indicate that the data visualisation operation
@@ -290,25 +276,27 @@ def run():
                         above_upper_limit.append(sublist_gravity[0])
                     else:
                         between_lower_and_upper.append(sublist_gravity[0])
-                categories = {'Low': below_lower_limit, 'Medium': between_lower_and_upper,
-                                   'High': above_upper_limit}
+                categories = {'Low': below_lower_limit, 'Medium': between_lower_and_upper, 'High': above_upper_limit}
                 visual.entities_bar(categories)
                 tui.completed('Entities by gravity')
                 tui.completed('Visualise Data')
             elif o == 3:
                 tui.started('Summary of orbits')
                 orbits = tui.orbits()
-                small_category = []
-                large_category = []
-                for item_index in range(len(records)):
-                    for orbit in orbits:
+                nested_dict = {}
+                for orbit in orbits:
+                    small_category = []
+                    large_category = []
+                    for item_index in range(len(records)):
                         if orbit == records[item_index][21]:
                             if float(records[1:][item_index][10]) < 100:
                                 small_category.append(records[item_index][0])
                             else:
                                 large_category.append(records[item_index][0])
-                summary = {orbit: {'small': small_category, 'large': large_category}}
-                visual.orbits(summary)
+                    nested_dict[orbit] = {}
+                    nested_dict[orbit]['small'] = small_category
+                    nested_dict[orbit]['large'] = large_category
+                visual.orbits(nested_dict)
                 tui.completed('Summary of orbits')
                 tui.completed('Visualise Data')
             elif o == 4:
@@ -344,27 +332,25 @@ def run():
         elif option == 4:
             tui.started('Save Data')
             tui.save()
-            class Abstractmethod(ABC) :
-                @abstractmethod
-                def list_of_planets_and_non_planets(self):
-                    pass
-            class planets_and_nonplanets(Abstractmethod):
-                def list_of_planets_and_non_planets(self):
-                    planets = []
-                    nonplanets = []
-                    for sublist in records:
-                        if sublist[1] == 'FALSE':
-                            nonplanets.append(sublist)
-                        elif sublist[1] == 'TRUE':
-                            planets.append(sublist)
-                    planets.sort()  #sort the list of planets in alphabetical order
-                    nonplanets.sort() #sort the list of nonplanets in alphabetical order
-                    planets_dictionary = {d[0]: d[1:] for d in planets} #create a dictionary with the key the name of the planet and the values
-                    nonplanets_dictionary = {d[0]: d[1:] for d in nonplanets} #create a dictionary with the key the name of the nonplanet and the values
-                    planets_and_nonplanets_dict = {'Planets': planets_dictionary, 'Non-planets': nonplanets_dictionary}#create a nested dictionary with planets and nonplanets
-                    print(planets_and_nonplanets_dict)
-
-            with open("C:\\Users\\maryus666\\Desktop\\QHO426\\Saved_data" , "w") as saved_data:
+            #class Abstractmethod(ABC) :
+                #@abstractmethod
+                #def list_of_planets_and_non_planets(self):
+                    #pass
+            #class planets_and_nonplanets(Abstractmethod):
+                #def list_of_planets_and_non_planets(self):
+            planets = []
+            nonplanets = []
+            for sublist in records:
+                if sublist[1] == 'FALSE':
+                    nonplanets.append(sublist)
+                elif sublist[1] == 'TRUE':
+                    planets.append(sublist)
+            planets.sort()  #sort the list of planets in alphabetical order
+            nonplanets.sort() #sort the list of nonplanets in alphabetical order
+            planets_dictionary = {d[0]: d[1:] for d in planets} #create a dictionary with the key the name of the planet and the values
+            nonplanets_dictionary = {d[0]: d[1:] for d in nonplanets} #create a dictionary with the key the name of the nonplanet and the values
+            planets_and_nonplanets_dict = {'Planets': planets_dictionary, 'Non-planets': nonplanets_dictionary}#create a nested dictionary with planets and nonplanets
+            with open("C:\\Users\\maryus666\\Desktop\\QHO426\\Saved_data.json" , "w") as saved_data:
                 json.dump(planets_and_nonplanets_dict, saved_data)
 
 

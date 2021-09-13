@@ -57,9 +57,11 @@ def entities_bar(categories):
     plt.show()
 
 
+
+
 def orbits(summary):
 
-      """
+    """
         Task 26: Display subplots where each subplot shows the "small" and "large" entities that orbit the planet.
 
         Summary is a nested dictionary of the form:
@@ -77,11 +79,33 @@ def orbits(summary):
         :return: Does not return anything
         """
 
+    for name in summary.keys():
+        small_orbits = [item['small'] for item in summary.values()]
+        large_orbits = [item['large'] for item in summary.values()]
+        if small_orbits[0] == []:
+            small_orbits.clear()
+        if large_orbits[0] == []: #here if the planet to be orbited doesn't have any small or large orbits the result was an empty list inside another emty list and the len of this would have been 1
+            large_orbits.clear()
+        data = [len(small_orbits), len(large_orbits)]
+        i = 1
+        while i <= len(summary.keys()):
+            plt.subplots(1,i)
+            plt.bar(['small', 'large'], data, color=['green', 'red'])
+            plt.title('Entities that orbit ' + str(name), color='blue')
+            plt.xlabel('Orbit type', color='blue')
+            plt.ylabel('Number of orbits', color='blue')
+            plt.show()
+            i += 1
+            data= []
 
-    #plt.show()
 
-    #data = [len(summary.values()) , len(summary.values())]
-    #plt.bar(['small', 'large'], data)
+
+    #for planet_orbited, orbit_size in summary.items():
+        #for key in orbit_size:
+            #print(len(orbit_size[key]))
+
+
+
 
 
 
@@ -103,9 +127,9 @@ def gravity_animation(categories):
     lst1 = [0, ((len(categories['Low']))/4), ((len(categories['Low']))/2), (3*(len(categories['Low']))/4), (len(categories['Low']))]
     lst2 = [0, ((len(categories['Medium']))/4), ((len(categories['Medium']))/2), (3*(len(categories['Medium']))/4), (len(categories['Medium']))]
     lst3 = [0, ((len(categories['High']))/4), ((len(categories['High']))/2), (3*(len(categories['High']))/4), (len(categories['High']))]
-    y1 = [ ]
-    y2 = [ ]
-    y3 = [ ]
+    y1 = []
+    y2 = []
+    y3 = []
     def animate(i):
         if i <= 4: # without this if statement i wqs getting an error index out of range.
             y1 = lst1[i]

@@ -36,7 +36,7 @@ def menu():
     print('4. Save Data')
     print('5. Exit')
     print()
-    option = input('Please type in your option: ')
+    option = input('Please enter the number corresponding to your selection: ')
     if (option == '1'):
         return 1
     elif (option ==  '2'):
@@ -48,7 +48,6 @@ def menu():
     elif (option ==  '5'):
         return 5
     else:
-        print('Invalid option')
         return None
 
 
@@ -128,6 +127,8 @@ def source_data_path():
         return None
 
 
+
+
 def process_type():
     """
     Task 7: Display a menu of options for how the file should be processed. Read in the user's response.
@@ -145,7 +146,7 @@ def process_type():
     :return: None if an invalid selection made otherwise an integer corresponding to a valid option
     """
     # TODO: Your code here
-    print('How the data should be processed? ')
+    print('How the data should be processed?  ')
     print()
     print('1. Retrieve entity')
     print('2. Retrieve entity details')
@@ -153,8 +154,7 @@ def process_type():
     print('4. Categorise entities by gravity')
     print('5. Summarise entities by orbit')
 
-#Askink the user to input his selection
-    option = input('Please type in your option: ')
+    option = input('Please enter the number corresponding to your selection: ')
     if (option == '1'):
         return 1
     elif (option == '2'):
@@ -352,7 +352,7 @@ def visualise():
     print('4. Animate gravities')
     print()
     # Asking the user to input his selection
-    option = input('Please type in your option: ')
+    option = input('Please enter the number corresponding to your selection:  ')
     if (option == '1'):
         return 1
     elif (option == '2'):
@@ -385,7 +385,7 @@ def save():
     print()
     print('1. Export as JSON')
     print()
-    option = input('Please type in your option: ')
+    option = input('Please enter the number corresponding to your selection: ')
     if (option == '1'):
         return 1
     else:
