@@ -134,6 +134,7 @@ def run():
                 else:
                     print('Entity not found')
                     continue
+
                 tui.completed('Process Data')
             elif option1 == 2:
                 tui.started('Retrieve entity details')

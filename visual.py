@@ -80,29 +80,18 @@ def orbits(summary):
         """
 
     for name in summary.keys():
-        small_orbits = [item['small'] for item in summary.values()]
-        large_orbits = [item['large'] for item in summary.values()]
-        if small_orbits[0] == []:
-            small_orbits.clear()
-        if large_orbits[0] == []: #here if the planet to be orbited doesn't have any small or large orbits the result was an empty list inside another emty list and the len of this would have been 1
-            large_orbits.clear()
+        small_orbits = summary[name]['small']
+        large_orbits = summary[name]['large']
         data = [len(small_orbits), len(large_orbits)]
-        i = 1
-        while i <= len(summary.keys()):
-            plt.subplots(1,i)
-            plt.bar(['small', 'large'], data, color=['green', 'red'])
-            plt.title('Entities that orbit ' + str(name), color='blue')
-            plt.xlabel('Orbit type', color='blue')
-            plt.ylabel('Number of orbits', color='blue')
-            plt.show()
-            i += 1
-            data= []
+        #plt.subplots(1, len(summary.keys()))
+        plt.subplots()
+        plt.bar(['small', 'large'], data, color=['green', 'red'])
+        plt.suptitle('Entities that orbit ' + str(name), color='blue')
+        data = []
+        small_orbits = []
+        large_orbits = []
+    plt.show()
 
-
-
-    #for planet_orbited, orbit_size in summary.items():
-        #for key in orbit_size:
-            #print(len(orbit_size[key]))
 
 
 
