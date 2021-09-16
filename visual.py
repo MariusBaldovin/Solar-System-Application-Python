@@ -81,23 +81,23 @@ def orbits(summary):
 
     data1 = []
     names = []
-    fig, axes = plt.subplots(1, len(summary.keys()))
+    fig, axes = plt.subplots(1, len(summary.keys())) #number of subplots will be the lenght of entities to be orbited inputed by user
     for name in summary.keys():
-        names.append(name)
+        names.append(name) # in list names all input of the planets to be orbited will be added
         small_orbits = summary[name]['small']
         large_orbits = summary[name]['large']
-        data = [len(small_orbits), len(large_orbits)]
-        data1.append(data)
+        data = [len(small_orbits), len(large_orbits)] #data will colect the number of small orbits and the number of large orbits for each planet, ready to be subploted
+        data1.append(data) #in case the user input is more than one planet data1 will record each time due to for loop. data1 is a list of lists.
         small_orbits = []
         large_orbits = []
-    for i in range(len(summary.keys())):
+    for i in range(len(summary.keys())):  #iterating through lenght of summary.keys() which is exactly the number of planets inputted by user.
         if int(len(summary.keys())) == 1:
             axes.bar(['small', 'large'], data1[i], color=['green', 'red'])
             plt.suptitle(f'Entities that orbit {names}', color='blue')
         else:
             axes[i].bar(['small', 'large'], data1[i], color=['green', 'red'])
-            axes[i].title.set_text(names[i])
-            plt.suptitle(f'Entities that orbit {names}', color='blue')
+            axes[i].title.set_text(names[i])   #adding a subtitle consisting in the name of the planet to be orbited, for each subplot
+            plt.suptitle(f'Entities that orbit {names}', color='blue') #title
     plt.show()
 
 
