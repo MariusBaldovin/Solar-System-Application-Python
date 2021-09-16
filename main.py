@@ -51,6 +51,7 @@ def run():
                         reader = csv.reader(csv_file)
                         for temp_list in reader:
                             records.append(temp_list)
+                        del records[0]  #I deleted the first index from global list records which was the header(the category names) from csv file
                 except FileNotFoundError:
                     print('Data file does not exist')
                     print()
@@ -126,11 +127,11 @@ def run():
             if option1 == 1:
                 tui.started('Retrieve entity')
                 name = tui.entity_name()
-                temp_entity_list = [x[0] for x in records]
+                temp_entity_list = [x[0] for x in records]#temp_entity_list will take value of x which will iterate through each element from eName category
                 if name in temp_entity_list:
-                    for item_index in range(len(records)):
+                    for item_index in range(len(records)): #item_index will iterate from 0 to len(records)
                         if name == records[item_index][0]:
-                            tui.list_entity(entity=records[item_index], cols=[])
+                            tui.list_entity(entity=records[item_index], cols=[]) #display entity from eName category along with all details
                 else:
                     print('Entity not found')
                     continue
@@ -168,9 +169,8 @@ def run():
                 below_lower_limit = []
                 above_upper_limit = []
                 between_lower_and_upper = []
-                records_minus_first_line = records[1:]
-                for sublist_gravity in records_minus_first_line:
-                    if float(sublist_gravity[8]) < float(gravity_range[0]):
+                for sublist_gravity in records:
+                    if float(sublist_gravity[8]) < float(gravity_range[0]): #after reading the csv file the elements were classed as strings and by using float we convert a string into a rational number.
                         below_lower_limit.append(sublist_gravity[0])
                     elif float(sublist_gravity[8]) > float(gravity_range[1]):
                         above_upper_limit.append(sublist_gravity[0])
