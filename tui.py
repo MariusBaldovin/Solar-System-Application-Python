@@ -199,9 +199,10 @@ def entity_details():
     # TODO: Your code here
 
     entity_name = input('Please enter the name of an entity: ')#asking user to enter name of entity
-    index_list = [int(item) for item in input('Please enter the list of integer column indexes separated by comma: ').split(',')] #first I made sure the inputted indexes are converted into integers after used split() method to return a list of integers with the separator declared as ','
+    index_list = [int(item) for item in input('Please enter the list of integer column indexes separated by comma: ').split(',')]#first I made sure the inputted indexes are converted into integers after used split() method to return a list of integers with the separator declared as ','
     final_list = [entity_name , index_list] #creating a new list containing name of entity and list of indexes
     return final_list #displaying the new list on the screen
+
 
 
 

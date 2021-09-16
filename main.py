@@ -39,7 +39,6 @@ def run():
         # - Read each line from the CSV file and add it to the list 'records'. You should appropriately handle the case
         # where the file cannot be found
         # TODO: Your code here
-        global records
         if option == 1:
             tui.started('Load Data')
             file_path = tui.source_data_path()
@@ -176,8 +175,8 @@ def run():
                         above_upper_limit.append(sublist_gravity[0])
                     else:
                         between_lower_and_upper.append(sublist_gravity[0])
-                categories = {'Low': below_lower_limit, 'Medium': between_lower_and_upper, 'High': above_upper_limit}
-                tui.list_categories(categories)
+                categories = {'Low': below_lower_limit, 'Medium': between_lower_and_upper, 'High': above_upper_limit} #assembled the dictionary
+                tui.list_categories(categories) #used categories function from tui.py to display the dictionary
                 tui.completed('Categorise entities by gravity')
                 tui.completed('Process Data')
             elif option1 == 5:
@@ -189,7 +188,7 @@ def run():
                     large_category = []
                     for item_index in range(len(records)):
                         if orbit == records[item_index][21]:
-                            if float(records[1:][item_index][10]) < 100:
+                            if float(records[item_index][10]) < 100:
                                 small_category.append(records[item_index][0])
                             else:
                                 large_category.append(records[item_index][0])
@@ -255,11 +254,11 @@ def run():
                 planets = []
                 nonplanets = []
                 for sublist in records:
-                    if sublist[1] == 'FALSE':
+                    if sublist[1] == 'FALSE': #isPlanet category elements 'FALSE' or 'TRUE' have been treated as strings
                         nonplanets.append(sublist[0])
                     elif sublist[1] == 'TRUE':
                         planets.append(sublist[0])
-                categories = {'Planets': planets, 'Non-Planets': nonplanets}
+                categories = {'Planets': planets, 'Non-Planets': nonplanets} #dictionary of planets and non-planets
                 visual.entities_pie(categories)
                 tui.completed('Entities by type')
                 tui.completed('Visualise Data')
@@ -269,8 +268,7 @@ def run():
                 below_lower_limit = []
                 above_upper_limit = []
                 between_lower_and_upper = []
-                records_minus_first_line = records[1:]
-                for sublist_gravity in records_minus_first_line:
+                for sublist_gravity in records:
                     if float(sublist_gravity[8]) < float(gravity_range[0]):
                         below_lower_limit.append(sublist_gravity[0])
                     elif float(sublist_gravity[8]) > float(gravity_range[1]):
@@ -290,12 +288,12 @@ def run():
                     large_category = []
                     for item_index in range(len(records)):
                         if orbit == records[item_index][21]:
-                            if float(records[1:][item_index][10]) < 100:
+                            if float(records[item_index][10]) < 100:
                                 small_category.append(records[item_index][0])
                             else:
                                 large_category.append(records[item_index][0])
                     nested_dict[orbit] = {}
-                    nested_dict[orbit]['small'] = small_category
+                    nested_dict[orbit]['small'] = small_category #assembled a nested dictionary
                     nested_dict[orbit]['large'] = large_category
                 visual.orbits(nested_dict)
                 tui.completed('Summary of orbits')
@@ -306,8 +304,7 @@ def run():
                 below_lower_limit = []
                 above_upper_limit = []
                 between_lower_and_upper = []
-                records_minus_first_line = records[1:]
-                for sublist_gravity in records_minus_first_line:
+                for sublist_gravity in records:
                     if float(sublist_gravity[8]) < float(gravity_range[0]):
                         below_lower_limit.append(sublist_gravity[0])
                     elif float(sublist_gravity[8]) > float(gravity_range[1]):
@@ -333,16 +330,6 @@ def run():
         elif option == 4:
             tui.started('Save Data')
             tui.save()
-            #class save_data(ABC) :
-                #@abstractmethod
-                #def __init__(self):
-                #def sorted_list_of_planets_and_non_planets(self):
-                 #   pass
-            #class save_as_json(save_data):
-               # def __init__(self):
-                    #super().__init__()
-
-                #def list_of_planets_and_non_planets(self):
             planets = []
             nonplanets = []
             for sublist in records:
@@ -357,8 +344,6 @@ def run():
             planets_and_nonplanets_dict = {'Planets': planets_dictionary, 'Non-planets': nonplanets_dictionary}#create a nested dictionary with planets and nonplanets
             with open("C:\\Users\\maryus666\\Desktop\\QHO426\\Saved_data.json" , "w") as saved_data:
                 json.dump(planets_and_nonplanets_dict, saved_data)
-
-
             tui.completed('Save Data')
         # Task 29: Check if the user selected the option for exiting.  If so, then do the following:
         # break out of the loop
@@ -374,6 +359,7 @@ def run():
 
 if __name__ == "__main__":
 
+
  run()
 
-#C:\\Users\\maryus666\\Desktop\\QHO426\\QHO426\\data\\sol_data.csv
+

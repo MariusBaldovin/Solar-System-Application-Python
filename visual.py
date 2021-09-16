@@ -1,4 +1,4 @@
-import random
+
 
 import matplotlib.pyplot as plt
 
@@ -6,7 +6,7 @@ import matplotlib.animation as animation
 
 from matplotlib.animation import FuncAnimation
 
-import random
+
 
 
 
@@ -79,18 +79,27 @@ def orbits(summary):
         :return: Does not return anything
         """
 
+    data1 = []
+    names = []
+    fig, axes = plt.subplots(1, len(summary.keys()))
     for name in summary.keys():
+        names.append(name)
         small_orbits = summary[name]['small']
         large_orbits = summary[name]['large']
         data = [len(small_orbits), len(large_orbits)]
-        #plt.subplots(1, len(summary.keys()))
-        plt.subplots()
-        plt.bar(['small', 'large'], data, color=['green', 'red'])
-        plt.suptitle('Entities that orbit ' + str(name), color='blue')
-        data = []
+        data1.append(data)
         small_orbits = []
         large_orbits = []
+    for i in range(len(summary.keys())):
+        if int(len(summary.keys())) == 1:
+            axes.bar(['small', 'large'], data1[i], color=['green', 'red'])
+            plt.suptitle(f'Entities that orbit {names}', color='blue')
+        else:
+            axes[i].bar(['small', 'large'], data1[i], color=['green', 'red'])
+            axes[i].title.set_text(names[i])
+            plt.suptitle(f'Entities that orbit {names}', color='blue')
     plt.show()
+
 
 
 
@@ -116,6 +125,7 @@ def gravity_animation(categories):
     lst1 = [0, ((len(categories['Low']))/4), ((len(categories['Low']))/2), (3*(len(categories['Low']))/4), (len(categories['Low']))]
     lst2 = [0, ((len(categories['Medium']))/4), ((len(categories['Medium']))/2), (3*(len(categories['Medium']))/4), (len(categories['Medium']))]
     lst3 = [0, ((len(categories['High']))/4), ((len(categories['High']))/2), (3*(len(categories['High']))/4), (len(categories['High']))]
+
     y1 = []
     y2 = []
     y3 = []
