@@ -120,7 +120,7 @@ def source_data_path():
 
     file_path = input('Please enter the file path of your data file: ')
     print()
-    if ".csv" in file_path[-4:]:
+    if ".csv" in file_path[-4:]: # if the last 4 characters of file path is ending in .csv will return the path
         return file_path
     else:
         print('Unsupported file extension, the file path is not ending in .csv')
@@ -199,7 +199,7 @@ def entity_details():
     # TODO: Your code here
 
     entity_name = input('Please enter the name of an entity: ')#asking user to enter name of entity
-    index_list = [int(item) for item in input('Please enter the list of integer column indexes separated by comma: ').split(',')]
+    index_list = [int(item) for item in input('Please enter the list of integer column indexes separated by comma: ').split(',')] #first I made sure the inputted indexes are converted into integers after used split() method to return a list of integers with the separator declared as ','
     final_list = [entity_name , index_list] #creating a new list containing name of entity and list of indexes
     return final_list #displaying the new list on the screen
 
@@ -224,11 +224,11 @@ def list_entity(entity, cols=[]):
     """
     # TODO: Your code here
     entity1 = []
-    if cols == []:
+    if cols == []:                    #if cols is empty list will display all entity values
         print(entity)
     else:
-        for i in cols:
-            entity1.append(entity[i])
+        for i in cols:                #I used for loop to iterate into list cols  ' into entity1 list
+            entity1.append(entity[i]) #used append() method to add each element from entity list coresponding to index position 'i
         print(entity1)
 
 
@@ -261,8 +261,8 @@ def list_entities(entities,cols = []):
     if cols == []:
         print(entities)
     else:
-        for i in range(len(entities)):
-            for i1 in cols:
+        for i in range(len(entities)): # I used nested for loop: i will iterate through (0 until lengh of entities)
+            for i1 in cols:            # i1 will iterate into cols
                 entity1.append(entities[i][i1])
         print(entity1)
 
@@ -296,13 +296,8 @@ def gravity_range():
     :return: a tuple with the lower and upper limits
     """
     # TODO: Your code here
-    lower_limit = float(input('Please enter the gravity lower limit: ' ))
-    upper_limit = float(input('Please enter the gravity upper limit: ' ))
-
-    tup = (lower_limit, upper_limit)
-
-    return tup
-
+    lower_and_upper_limits = (float(input('Please enter the gravity lower limit: ')), float(input('Please enter the gravity upper limit: ')))
+    return lower_and_upper_limits
 
 
 
@@ -319,9 +314,8 @@ def orbits():
     :return: a list of entity names
     """
     # TODO: Your code here
-    entity_names = input('Please enter the list of entity names separated by commas: ')
-    entity_names1 = entity_names.split(",")
-    return entity_names1
+    entity_names = input('Please enter the list of entity names separated by commas: ').split(',') #split() method splits a string into a list, separator specified is ','
+    return entity_names
 
 
 

@@ -333,11 +333,15 @@ def run():
         elif option == 4:
             tui.started('Save Data')
             tui.save()
-            #class Abstractmethod(ABC) :
+            #class save_data(ABC) :
                 #@abstractmethod
-                #def list_of_planets_and_non_planets(self):
-                    #pass
-            #class planets_and_nonplanets(Abstractmethod):
+                #def __init__(self):
+                #def sorted_list_of_planets_and_non_planets(self):
+                 #   pass
+            #class save_as_json(save_data):
+               # def __init__(self):
+                    #super().__init__()
+
                 #def list_of_planets_and_non_planets(self):
             planets = []
             nonplanets = []
